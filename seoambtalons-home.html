@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO amb Talons — Proposta Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f0eb;
+    --coral: #e8472a;
+    --coral-light: #ff6b4a;
+    --sand: #d4c5b0;
+    --dark-sand: #1a1612;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    mix-blend-mode: normal;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--coral); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--sand);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--coral);
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 12rem 4rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--coral);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    line-height: 1.0;
+    font-weight: 900;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--sand);
+    max-width: 480px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+
+  .hero-actions {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: var(--white);
+    padding: 1rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--coral-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    color: var(--white);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--sand);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--coral); border-color: var(--coral); }
+
+  .hero-stats {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 1s forwards;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--sand);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+  }
+
+  /* Hero Right */
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-shape {
+    position: absolute;
+    inset: 0;
+    background: var(--dark-sand);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .hero-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 3rem;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 380px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .card-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1.5rem;
+  }
+
+  .card-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .card-metric:last-child { border-bottom: none; }
+
+  .metric-name {
+    font-size: 0.85rem;
+    color: var(--sand);
+  }
+
+  .metric-bar-wrap {
+    flex: 1;
+    margin: 0 1.2rem;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .metric-bar {
+    height: 100%;
+    background: var(--coral);
+    border-radius: 2px;
+    animation: growBar 1.5s 1.5s both;
+    transform-origin: left;
+  }
+
+  .metric-val {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+    min-width: 40px;
+    text-align: right;
+  }
+
+  .positive { color: #4ade80; font-size: 0.75rem; }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--coral);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    animation: ticker 25s linear infinite;
+  }
+
+  .ticker-item {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0 3rem;
+    color: var(--white);
+  }
+
+  .ticker-item::after {
+    content: '✦';
+    margin-left: 3rem;
+  }
+
+  /* ── SERVEIS ── */
+  .serveis {
+    padding: 8rem 4rem;
+    position: relative;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  h2 em { font-style: italic; color: var(--coral); }
+
+  .section-link {
+    color: var(--sand);
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--sand);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+
+  .section-link:hover { color: var(--coral); }
+
+  .serveis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .servei-card {
+    background: var(--black);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .servei-card:hover {
+    background: #141414;
+  }
+
+  .servei-card:hover .servei-arrow {
+    transform: translate(4px, -4px);
+    color: var(--coral);
+  }
+
+  .servei-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .servei-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .servei-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--white);
+  }
+
+  .servei-desc {
+    font-size: 0.88rem;
+    color: var(--sand);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .servei-arrow {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s, color 0.3s;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── SOBRE NOSALTRES ── */
+  .sobre {
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--dark-sand);
+  }
+
+  .sobre-left {}
+
+  .sobre-right {}
+
+  .sobre-copy {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--sand);
+    font-weight: 300;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .sobre-copy strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .sobre-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .value-item {
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    transition: border-color 0.3s;
+  }
+
+  .value-item:hover { border-color: var(--coral); }
+
+  .value-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
+
+  .value-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .value-desc {
+    font-size: 0.8rem;
+    color: var(--sand);
+    line-height: 1.5;
+  }
+
+  /* ── CTA FINAL ── */
+  .cta-section {
+    padding: 8rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232,71,42,0.15) 0%, transparent 70%);
+  }
+
+  .cta-section h2 {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .cta-sub {
+    color: var(--sand);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--sand);
+  }
+
+  /* ── NOTA WIREFRAME ── */
+  .wireframe-note {
+    background: rgba(232,71,42,0.08);
+    border: 1px dashed var(--coral);
+    border-radius: 4px;
+    padding: 1.2rem 2rem;
+    margin: 0 4rem 3rem;
+    font-size: 0.82rem;
+    color: var(--coral);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @keyframes growBar {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  /* ── COPY SECTION ── */
+  .copy-section {
+    background: #111;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 5rem 4rem;
+  }
+
+  .copy-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    color: var(--white);
+  }
+
+  .copy-title span { color: var(--coral); }
+
+  .copy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .copy-block {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 2rem;
+  }
+
+  .copy-block-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1rem;
+  }
+
+  .copy-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--white);
+  }
+
+  .copy-block p {
+    font-size: 0.9rem;
+    color: var(--sand);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .copy-block ul {
+    list-style: none;
+    margin-top: 0.8rem;
+  }
+
+  .copy-block ul li {
+    font-size: 0.88rem;
+    color: var(--sand);
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .copy-block ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">SEO<span>amb</span>Talons</a>
+  <ul class="nav-links">
+    <li><a href="/serveis">Serveis</a></li>
+    <li><a href="/per-a-qui">Per a qui</a></li>
+    <li><a href="/casos-exit">Casos d'èxit</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/contacte" class="nav-cta">Parlem</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">SEO per a dones emprenedores</span>
+    <h1>Posiciona el teu<br>negoci sense<br><em>perdre el teu estil</em></h1>
+    <p class="hero-sub">T'ajudem a apareixer a Google quan les teves clientes et busquen. SEO estratègic pensat per a negocis femenins que volen créixer de veritat.</p>
+    <div class="hero-actions">
+      <a href="/contacte" class="btn-primary">Vull una auditoria gratis</a>
+      <a href="/serveis" class="btn-secondary">Veure serveis →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">+120</div>
+        <div class="stat-label">Negocis posicionats</div>
+      </div>
+      <div>
+        <div class="stat-num">3×</div>
+        <div class="stat-label">Tràfic de mitjana</div>
+      </div>
+      <div>
+        <div class="stat-num">8 anys</div>
+        <div class="stat-label">D'experiència</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="card-label">📈 Resultats d'una clienta — 6 mesos</div>
+        <div class="card-metric">
+          <span class="metric-name">Visibilitat</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:88%"></div></div>
+          <span class="metric-val">+312% <span class="positive">↑</span></span>
+        </div>
+        <div class="card-metric">
+          <span class="metric-name">Posicions Top 3</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:72%"></div></div>
+          <span class="metric-val">+24 kw</span>
+        </div>
+        <div class="card-metric">
+          <span class="metric-name">Tràfic orgànic</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:95%"></div></div>
+          <span class="metric-val">+3.1k/m</span>
+        </div>
+        <div class="card-metric">
+          <span class="metric-name">Vendes online</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:65%"></div></div>
+          <span class="metric-val">+78% <span class="positive">↑</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">SEO Estratègic</span>
+    <span class="ticker-item">Auditoria SEO</span>
+    <span class="ticker-item">SEO Local</span>
+    <span class="ticker-item">E-commerce SEO</span>
+    <span class="ticker-item">Continguts SEO</span>
+    <span class="ticker-item">Link Building</span>
+    <span class="ticker-item">SEO Tècnic</span>
+    <span class="ticker-item">SEO Estratègic</span>
+    <span class="ticker-item">Auditoria SEO</span>
+    <span class="ticker-item">SEO Local</span>
+    <span class="ticker-item">E-commerce SEO</span>
+    <span class="ticker-item">Continguts SEO</span>
+    <span class="ticker-item">Link Building</span>
+    <span class="ticker-item">SEO Tècnic</span>
+  </div>
+</div>
+
+<!-- SERVEIS -->
+<section class="serveis">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">El que fem</div>
+      <h2>Serveis que fan<br><em>créixer</em> el teu negoci</h2>
+    </div>
+    <a href="/serveis" class="section-link">Veure tots els serveis →</a>
+  </div>
+
+  <div class="serveis-grid">
+    <div class="servei-card">
+      <div class="servei-num">01</div>
+      <div class="servei-icon">🔍</div>
+      <div class="servei-title">Auditoria SEO</div>
+      <p class="servei-desc">Analitzem el teu web de dalt a baix per detectar exactament per on s'escapa el teu tràfic i com recuperar-lo.</p>
+      <div class="servei-arrow">↗</div>
+    </div>
+    <div class="servei-card">
+      <div class="servei-num">02</div>
+      <div class="servei-icon">📍</div>
+      <div class="servei-title">SEO Local</div>
+      <p class="servei-desc">Apareix quan les teves clientes et busquen a prop. Optimitzem el teu Google Business i les paraules clau locals.</p>
+      <div class="servei-arrow">↗</div>
+    </div>
+    <div class="servei-card">
+      <div class="servei-num">03</div>
+      <div class="servei-icon">🛍️</div>
+      <div class="servei-title">SEO per a E-commerce</div>
+      <p class="servei-desc">Posicionem les teves fitxes de producte i categories per atraure clients que ja volen comprar.</p>
+      <div class="servei-arrow">↗</div>
+    </div>
+    <div class="servei-card">
+      <div class="servei-num">04</div>
+      <div class="servei-icon">✍️</div>
+      <div class="servei-title">Estratègia de Continguts</div>
+      <p class="servei-desc">Creem un pla de continguts que posiciona i connecta amb el teu públic. El teu blog, la teva veu.</p>
+      <div class="servei-arrow">↗</div>
+    </div>
+    <div class="servei-card">
+      <div class="servei-num">05</div>
+      <div class="servei-icon">⚙️</div>
+      <div class="servei-title">SEO Tècnic</div>
+      <p class="servei-desc">Velocitat, estructura i indexació. Que Google pugui rastrejar i entendre el teu web sense obstacles.</p>
+      <div class="servei-arrow">↗</div>
+    </div>
+    <div class="servei-card">
+      <div class="servei-num">06</div>
+      <div class="servei-icon">🔗</div>
+      <div class="servei-title">Link Building</div>
+      <p class="servei-desc">Aconseguim que webs de qualitat parlin del teu negoci. Autoritat real que Google valora i premia.</p>
+      <div class="servei-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre">
+  <div class="sobre-left">
+    <div class="section-tag">Qui som</div>
+    <h2>SEO amb <em>estratègia</em><br>i amb taló</h2>
+    <p class="sobre-copy">
+      Som una agència SEO especialitzada en negocis de dones emprenedores. Sabem que el teu temps és or i que cada euro invertit ha de tornar multiplicat.<br><br>
+      <strong>No fem SEO genèric.</strong> Fem estratègies pensades per al teu nínxol, el teu públic i els teus objectius. Amb dades, amb criteri i amb molt d'estil.
+    </p>
+    <a href="/sobre-nosaltres" class="btn-primary">Coneix l'equip</a>
+  </div>
+  <div class="sobre-right">
+    <div class="sobre-values">
+      <div class="value-item">
+        <div class="value-icon">🎯</div>
+        <div class="value-title">Orientades a resultats</div>
+        <div class="value-desc">Mesurem tot. Cada acció ha de tenir un impacte real al teu negoci.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">💬</div>
+        <div class="value-title">Comunicació clara</div>
+        <div class="value-desc">Res de tecnicismes incomprensibles. T'expliquem tot en el teu idioma.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Tracte personalitzat</div>
+        <div class="value-desc">No som una fàbrica de webs. Cada projecte és únic i el tractem com a tal.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">📊</div>
+        <div class="value-title">Transparència total</div>
+        <div class="value-desc">Informes mensuals clars. Saps exactament on ets i cap on vas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="section-tag">Dona el primer pas</div>
+  <h2>El teu negoci mereix<br>ser <em>trobat</em></h2>
+  <p class="cta-sub">Auditoria SEO gratuïta. Sense compromís. Sense tecnicismes innecessaris.</p>
+  <div class="cta-actions">
+    <a href="/contacte" class="btn-primary">Sol·licita l'auditoria gratis</a>
+    <a href="/preus" class="btn-secondary">Veure plans i preus →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="logo">SEO<span style="color:var(--coral)">amb</span>Talons</span>
+  <span class="footer-copy">© 2025 seoambtalons.cat — Tots els drets reservats</span>
+</footer>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PROPOSTA DE COPY                           -->
+<!-- ══════════════════════════════════════════ -->
+<div class="wireframe-note">
+  ↓ A continuació trobaràs la proposta de COPY detallada per a cada secció ↓
+</div>
+
+<section class="copy-section">
+  <div class="copy-title">📝 Proposta de <span>copy</span> — Home</div>
+  <div class="copy-grid">
+
+    <div class="copy-block">
+      <div class="copy-block-label">Hero — Títol principal (H1)</div>
+      <h3>Posiciona el teu negoci sense perdre el teu estil</h3>
+      <p>T'ajudem a apareixer a Google quan les teves clientes et busquen. SEO estratègic pensat per a negocis femenins que volen créixer de veritat.</p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Hero — CTA principal</div>
+      <h3>Vull una auditoria gratis</h3>
+      <p>CTA directe, sense fricció i amb valor clar. Redueix la barrera d'entrada: és gratis i sense compromís. CTA secundari: "Veure serveis →"</p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Serveis — Introducció</div>
+      <h3>Serveis que fan créixer el teu negoci</h3>
+      <p>Presentació dels 6 serveis principals. Cada targeta inclou:</p>
+      <ul>
+        <li>Nom clar i directe del servei</li>
+        <li>Benefici en 1-2 frases (no característiques tècniques)</li>
+        <li>Numeració per generar sensació de sistema i professionalitat</li>
+      </ul>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Sobre nosaltres — Títol</div>
+      <h3>SEO amb estratègia i amb taló</h3>
+      <p>Joc de paraules amb el nom de la marca. Transmet: expertise + personalitat femenina + diferenciació. El cos del text ha de respondre: per a qui som, per què som diferents i per què confiar.</p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Valors de marca (4 pilars)</div>
+      <ul>
+        <li><strong>Orientades a resultats</strong> — Mesurem tot. Cada acció ha de tenir un impacte real.</li>
+        <li><strong>Comunicació clara</strong> — Res de tecnicismes. T'expliquem tot en el teu idioma.</li>
+        <li><strong>Tracte personalitzat</strong> — No som una fàbrica. Cada projecte és únic.</li>
+        <li><strong>Transparència total</strong> — Informes mensuals. Saps on ets i cap on vas.</li>
+      </ul>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">CTA final — Tancament</div>
+      <h3>El teu negoci mereix ser trobat</h3>
+      <p>Missatge emocional al final: el verb "merèixer" connecta amb l'autoestima professional de la clienta objectiu. Subtítol: "Auditoria SEO gratuïta. Sense compromís. Sense tecnicismes innecessaris."</p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
