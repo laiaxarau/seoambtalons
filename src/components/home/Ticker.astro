@@ -1,0 +1,43 @@
+---
+const items = [
+  'SEO Estratègic',
+  'Auditoria SEO',
+  'SEO Local',
+  'E-commerce SEO',
+  'Continguts SEO',
+  'Link Building',
+  'SEO Tècnic',
+  'Posicionament Web',
+]
+
+// Dupliquem per fer el loop infinit sense tall
+const doubled = [...items, ...items]
+---
+
+<div class="overflow-hidden bg-coral py-4" aria-hidden="true">
+  <div class="ticker-track flex whitespace-nowrap">
+    {doubled.map((item) => (
+      <span class="inline-flex items-center text-offwhite text-xs uppercase
+                   tracking-[0.18em] font-medium px-10">
+        {item}
+        <span class="ml-10 text-offwhite/40">✦</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ticker-track {
+    animation: ticker 30s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>

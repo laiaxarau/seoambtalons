@@ -1,0 +1,105 @@
+---
+const serveis = [
+  {
+    num: '01',
+    icon: '🔍',
+    title: 'Auditoria SEO',
+    desc: "Analitzem el teu web de dalt a baix per detectar exactament per on s'escapa el teu tràfic i com recuperar-lo.",
+    href: '/serveis/auditoria-seo',
+  },
+  {
+    num: '02',
+    icon: '📍',
+    title: 'SEO Local',
+    desc: 'Apareix quan les teves clientes et busquen a prop. Optimitzem el teu Google Business i les paraules clau locals.',
+    href: '/serveis/seo-local',
+  },
+  {
+    num: '03',
+    icon: '🛍️',
+    title: 'SEO per a E-commerce',
+    desc: 'Posicionem les teves fitxes de producte i categories per atraure clients que ja volen comprar.',
+    href: '/serveis/seo-ecommerce',
+  },
+  {
+    num: '04',
+    icon: '✍️',
+    title: 'Estratègia de Continguts',
+    desc: 'Creem un pla de continguts que posiciona i connecta amb el teu públic. El teu blog, la teva veu.',
+    href: '/serveis/continguts-seo',
+  },
+  {
+    num: '05',
+    icon: '⚙️',
+    title: 'SEO Tècnic',
+    desc: 'Velocitat, estructura i indexació. Que Google pugui rastrejar i entendre el teu web sense obstacles.',
+    href: '/serveis/seo-tecnic',
+  },
+  {
+    num: '06',
+    icon: '🔗',
+    title: 'Link Building',
+    desc: 'Aconseguim que webs de qualitat parlin del teu negoci. Autoritat real que Google valora i premia.',
+    href: '/serveis/linkbuilding',
+  },
+]
+---
+
+<section class="px-8 lg:px-16 py-24 lg:py-32">
+
+  <!-- Capçalera -->
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between
+              gap-6 mb-16">
+    <div>
+      <p class="section-tag mb-3">El que fem</p>
+      <h2 class="section-title text-offwhite">
+        Serveis que fan<br>
+        <em class="italic text-coral">créixer</em> el teu negoci
+      </h2>
+    </div>
+    <a href="/serveis" class="btn-secondary shrink-0">
+      Veure tots els serveis →
+    </a>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+              border border-white/8 divide-x divide-y divide-white/8">
+    {serveis.map(({ num, icon, title, desc, href }) => (
+      <a
+        href={href}
+        class="group relative flex flex-col gap-4 p-8 lg:p-10
+               bg-transparent hover:bg-white/3 transition-colors duration-300"
+      >
+        <!-- Número decoratiu -->
+        <span class="font-display text-5xl font-black text-white/5
+                     leading-none select-none">
+          {num}
+        </span>
+
+        <!-- Icona -->
+        <span class="text-2xl -mt-2">{icon}</span>
+
+        <!-- Títol -->
+        <h3 class="font-display text-xl font-bold text-offwhite
+                   group-hover:text-coral transition-colors duration-300">
+          {title}
+        </h3>
+
+        <!-- Descripció -->
+        <p class="text-sand text-sm font-light leading-relaxed flex-1">
+          {desc}
+        </p>
+
+        <!-- Arrow -->
+        <span class="text-white/20 text-lg absolute top-8 right-8
+                     transition-all duration-300
+                     group-hover:text-coral group-hover:translate-x-1
+                     group-hover:-translate-y-1">
+          ↗
+        </span>
+      </a>
+    ))}
+  </div>
+
+</section>

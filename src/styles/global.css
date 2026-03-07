@@ -3,7 +3,6 @@
 /* Tokens de marca amb CSS custom properties natives */
 @theme {
   --color-coral: #e8472a;
-  /* --color-coral: #ff7f50; */
   --color-coral-light: #ff6b4a;
   --color-sand: #d4c5b0;
   --color-black: #0a0a0a;
