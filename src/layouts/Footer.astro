@@ -1,0 +1,191 @@
+---
+const serveis = [
+  { label: 'Auditoria SEO',        href: '/serveis/auditoria-seo' },
+  { label: 'SEO Local',            href: '/serveis/seo-local' },
+  { label: 'SEO Tècnic',           href: '/serveis/seo-tecnic' },
+  { label: 'Estratègia continguts', href: '/serveis/continguts-seo' },
+  { label: 'Link Building',        href: '/serveis/linkbuilding' },
+  { label: 'SEO E-commerce',       href: '/serveis/seo-ecommerce' },
+]
+
+const empresa = [
+  { label: 'Sobre nosaltres', href: '/sobre-nosaltres' },
+  { label: "Casos d'èxit",   href: '/casos-exit' },
+  { label: 'Blog',           href: '/blog' },
+  { label: 'Recursos',       href: '/recursos' },
+  { label: 'Preus',          href: '/preus' },
+  { label: 'Contacte',       href: '/contacte' },
+]
+
+const legal = [
+  { label: 'Avís legal',             href: '/avis-legal' },
+  { label: 'Política de privacitat', href: '/politica-privacitat' },
+  { label: 'Política de cookies',    href: '/politica-de-cookies' },
+]
+
+const year = new Date().getFullYear()
+---
+
+<footer class="border-t border-white/8 bg-dark-sand">
+
+  <!-- Top -->
+  <div class="px-8 lg:px-16 pt-16 pb-12
+              grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+    <!-- Marca -->
+    <div class="lg:col-span-1">
+      <a href="/" class="font-display text-xl tracking-wide text-offwhite">
+        SEO<span class="text-coral">amb</span>Talons
+      </a>
+      <p class="mt-4 text-sand text-sm font-light leading-relaxed max-w-xs">
+        SEO estratègic per a dones emprenedores que volen créixer a Google
+        sense perdre el seu estil.
+      </p>
+      <!-- Xarxes -->
+      <div class="flex gap-4 mt-6">
+        <a href="https://instagram.com" target="_blank" rel="noopener"
+           class="text-sand hover:text-coral transition-colors duration-200 text-sm
+                  uppercase tracking-widest">
+          IG
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener"
+           class="text-sand hover:text-coral transition-colors duration-200 text-sm
+                  uppercase tracking-widest">
+          LI
+        </a>
+      </div>
+    </div>
+
+    <!-- Serveis -->
+    <div>
+      <h3 class="text-xs uppercase tracking-[0.18em] text-coral mb-5">
+        Serveis
+      </h3>
+      <ul class="flex flex-col gap-3">
+        {serveis.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="text-sand text-sm font-light hover:text-offwhite
+                     transition-colors duration-200"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Empresa -->
+    <div>
+      <h3 class="text-xs uppercase tracking-[0.18em] text-coral mb-5">
+        Empresa
+      </h3>
+      <ul class="flex flex-col gap-3">
+        {empresa.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              class="text-sand text-sm font-light hover:text-offwhite
+                     transition-colors duration-200"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Contacte + Newsletter -->
+    <div>
+      <h3 class="text-xs uppercase tracking-[0.18em] text-coral mb-5">
+        Contacte
+      </h3>
+      <a
+        href="mailto:hola@seoambtalons.cat"
+        class="text-sand text-sm font-light hover:text-coral
+               transition-colors duration-200 block mb-6"
+      >
+        hola@seoambtalons.cat
+      </a>
+
+      <p class="text-xs uppercase tracking-widest text-coral mb-3">
+        Newsletter
+      </p>
+      <form
+        class="flex gap-2"
+        action="/api/newsletter"
+        method="POST"
+      >
+        <input
+          type="email"
+          name="email"
+          placeholder="el@teumail.cat"
+          required
+          class="flex-1 bg-white/5 border border-white/10 text-offwhite
+                 text-sm px-4 py-2.5 placeholder:text-sand/50
+                 focus:outline-none focus:border-coral transition-colors duration-200"
+        />
+        <button
+          type="submit"
+          class="bg-coral text-offwhite text-xs px-4 py-2.5 uppercase
+                 tracking-widest hover:bg-coral-light transition-colors duration-200"
+        >
+          →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bottom
+  <div class="px-8 lg:px-16 py-6 border-t border-white/5
+              flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sand text-xs">
+      © {year} seoambtalons.cat — Tots els drets reservats
+    </p>
+    <div class="flex gap-6">
+      {legal.map(({ label, href }) => (
+        <a
+          href={href}
+          class="text-sand/60 text-xs hover:text-sand transition-colors duration-200"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div> -->
+  <!-- Bottom -->
+<div class="px-8 lg:px-16 py-6 border-t border-white/5
+            flex flex-col sm:flex-row items-center justify-between gap-4">
+  <p class="text-sand text-xs">
+    © {year} seoambtalons.cat — Tots els drets reservats
+  </p>
+  <div class="flex gap-6 items-center">
+    {legal.map(({ label, href }) => (
+      <a
+        href={href}
+        class="text-sand/60 text-xs hover:text-sand transition-colors duration-200"
+      >
+        {label}
+      </a>
+    ))}
+
+    <!-- Botó cookies — dispara event global -->
+    <button
+      id="open-cookie-settings"
+      class="text-sand/60 text-xs hover:text-sand transition-colors duration-200
+             cursor-pointer"
+    >
+      Gestionar cookies
+    </button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('open-cookie-settings')
+    ?.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('open-cookies'))
+    })
+</script>
+
+</footer>

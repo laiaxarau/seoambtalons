@@ -1,0 +1,46 @@
+---
+import SEOHead from '../components/seo/SEOHead.astro'
+import Nav from './Nav.astro'
+import Footer from './Footer.astro'
+import CookieBanner from './CookieBanner.astro'
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+  canonical?: string
+  ogImage?: string
+}
+
+const { title, description, canonical, ogImage } = Astro.props
+---
+
+<!doctype html>
+<html lang="ca">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+    />
+  </head>
+  <body class="bg-[#0a0a0a] text-offwhite font-body antialiased">
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+    <!-- Botó flotant cookies -->
+<!-- <button
+  onclick="window.dispatchEvent(new CustomEvent('open-cookies'))"
+  class="fixed bottom-6 left-6 z-40 bg-dark-sand border border-white/10
+         text-sand text-xs uppercase tracking-widest px-4 py-2.5
+         hover:border-coral hover:text-coral transition-colors duration-200"
+  aria-label="Gestionar cookies"
+>
+  🍪
+</button> -->
+  </body>
+</html> 
