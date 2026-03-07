@@ -10,7 +10,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://seoambtalent.cat',
-  integrations: [mdx(), sitemap(),tailwindcss(),partytown({ config: { forward: ['dataLayer.push'] } })],
+  integrations: [mdx(), sitemap(),partytown({ config: { forward: ['dataLayer.push'] } })],
 
   vite: {
     plugins: [tailwindcss()],
