@@ -1,0 +1,178 @@
+---
+// Sense props per ara — les dades són estàtiques
+// Quan tinguem Sanity les podrem extreure d'aquí
+---
+
+<section class="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+
+  <!-- ── ESQUERRA ── -->
+  <div class="relative z-10 flex flex-col justify-center
+              px-8 lg:px-16 pt-32 pb-16 lg:py-0">
+
+    <!-- Tag -->
+    <span
+      class="hero-item inline-flex items-center gap-3 text-coral text-xs
+             uppercase tracking-[0.18em] font-medium mb-8 opacity-0"
+    >
+      <span class="block w-8 h-px bg-coral"></span>
+      SEO per a dones emprenedores
+    </span>
+
+    <!-- H1 -->
+    <h1
+      class="hero-item font-display text-5xl lg:text-6xl xl:text-7xl font-black
+             leading-[1.0] text-offwhite opacity-0"
+    >
+      Posiciona el<br>
+      teu negoci<br>
+      sense perdre<br>
+      <em class="italic text-coral">el teu estil</em>
+    </h1>
+
+    <!-- Subtítol -->
+    <p
+      class="hero-item mt-6 text-sand font-light text-lg leading-relaxed
+             max-w-md opacity-0"
+    >
+      T'ajudem a apareixer a Google quan les teves clientes et busquen.
+      SEO estratègic pensat per a negocis femenins que volen créixer de veritat.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-item flex flex-wrap items-center gap-5 mt-10 opacity-0">
+      <a href="/contacte" class="btn-primary">
+        Vull una auditoria
+      </a>
+      <a href="/serveis" class="btn-secondary">
+        Veure serveis →
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-item flex gap-10 mt-14 opacity-0">
+      {[
+        { num: '+120', label: 'Negocis posicionats' },
+        { num: '3×',   label: 'Tràfic de mitjana'  },
+        { num: '8 anys', label: "D'experiència"    },
+      ].map(({ num, label }) => (
+        <div>
+          <div class="font-display text-3xl font-bold text-offwhite leading-none">
+            {num}
+          </div>
+          <div class="text-sand text-xs uppercase tracking-widest mt-1.5">
+            {label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ── DRETA ── -->
+  <div class="relative hidden lg:block">
+
+    <!-- Fons forma diagonal -->
+    <div
+      class="absolute inset-0 bg-dark-sand"
+      style="clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%)"
+    ></div>
+
+    <!-- Targeta de resultats -->
+    <div class="absolute inset-0 flex items-center justify-center px-12">
+      <div
+        class="hero-card w-full max-w-sm bg-white/4 border border-white/10
+               backdrop-blur-sm p-8 opacity-0"
+      >
+        <p class="text-coral text-xs uppercase tracking-[0.18em] mb-6">
+          📈 Resultats d'una clienta — 6 mesos
+        </p>
+
+        {[
+          { label: 'Visibilitat',     value: '+312%', width: '88%' },
+          { label: 'Posicions Top 3', value: '+24 kw', width: '72%' },
+          { label: 'Tràfic orgànic',  value: '+3.1k/m', width: '95%' },
+          { label: 'Vendes online',   value: '+78%',  width: '65%' },
+        ].map(({ label, value, width }) => (
+          <div class="flex items-center gap-4 py-3.5 border-b border-white/8 last:border-0">
+            <span class="text-sand text-sm w-32 shrink-0">{label}</span>
+            <div class="flex-1 h-px bg-white/8 relative overflow-hidden">
+              <div
+                class="metric-bar absolute left-0 top-0 h-full bg-coral"
+                style={`width: ${width}`}
+              ></div>
+            </div>
+            <span class="text-offwhite text-sm font-medium w-16 text-right shrink-0">
+              {value}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Decoració — cercle coral difuminat -->
+    <div
+      class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2
+             w-96 h-96 bg-coral/15 rounded-full blur-3xl pointer-events-none"
+    ></div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-8 lg:left-16 flex items-center gap-3
+              text-sand/40 text-xs uppercase tracking-widest">
+    <div class="scroll-line w-px h-10 bg-sand/20 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full bg-coral animate-scroll-line"></div>
+    </div>
+    Scroll
+  </div>
+
+</section>
+
+<style>
+  /* Animació entrada elements hero */
+  .hero-item {
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-item:nth-child(1) { animation-delay: 0.1s; }
+  .hero-item:nth-child(2) { animation-delay: 0.3s; }
+  .hero-item:nth-child(3) { animation-delay: 0.5s; }
+  .hero-item:nth-child(4) { animation-delay: 0.7s; }
+  .hero-item:nth-child(5) { animation-delay: 0.9s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Barres de mètriques */
+  .metric-bar {
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: growBar 1.2s ease forwards;
+  }
+
+  @keyframes growBar {
+    to { transform: scaleX(1); }
+  }
+
+  /* Scroll indicator */
+  @keyframes scrollLine {
+    0%   { height: 0; top: 0; }
+    50%  { height: 100%; top: 0; }
+    100% { height: 0; top: 100%; }
+  }
+
+  .animate-scroll-line {
+    animation: scrollLine 2s ease infinite;
+  }
+
+  /* Delay barres en cascada */
+  .metric-bar:nth-child(1) { animation-delay: 1.2s; }
+  .metric-bar:nth-child(2) { animation-delay: 1.4s; }
+  .metric-bar:nth-child(3) { animation-delay: 1.6s; }
+  .metric-bar:nth-child(4) { animation-delay: 1.8s; }
+
+  /* Targeta hero */
+  .hero-card {
+    animation: fadeUp 0.8s 1.2s ease forwards;
+  }
+</style>
