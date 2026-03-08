@@ -25,7 +25,12 @@ const { title, description, canonical, ogImage } = Astro.props
       ogImage={ogImage}
     />
   </head>
-  <body class="bg-[#0a0a0a] text-offwhite font-body antialiased">
+  <body 
+  class="bg-[#0a0a0a] text-offwhite font-body antialiased">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJSWGBS7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <Nav />
     <main>
       <slot />
