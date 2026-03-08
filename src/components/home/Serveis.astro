@@ -2,42 +2,42 @@
 const serveis = [
   {
     num: '01',
-    icon: '🔍',
+    icon: '../src/assets/audit-seo.svg',
     title: 'Auditoria SEO',
     desc: "Analitzem el teu web de dalt a baix per detectar exactament per on s'escapa el teu tràfic i com recuperar-lo.",
     href: '/serveis/auditoria-seo',
   },
   {
     num: '02',
-    icon: '📍',
+    icon: '../src/assets/seo-local.svg',
     title: 'SEO Local',
     desc: 'Apareix quan les teves clientes et busquen a prop. Optimitzem el teu Google Business i les paraules clau locals.',
     href: '/serveis/seo-local',
   },
   {
     num: '03',
-    icon: '🛍️',
+    icon: '../src/assets/seo-ecommerce.svg',
     title: 'SEO per a E-commerce',
     desc: 'Posicionem les teves fitxes de producte i categories per atraure clients que ja volen comprar.',
     href: '/serveis/seo-ecommerce',
   },
   {
     num: '04',
-    icon: '✍️',
+    icon: '../src/assets/content-strategy.svg',
     title: 'Estratègia de Continguts',
     desc: 'Creem un pla de continguts que posiciona i connecta amb el teu públic. El teu blog, la teva veu.',
     href: '/serveis/continguts-seo',
   },
   {
     num: '05',
-    icon: '⚙️',
+    icon: '../src/assets/seo-technical.svg',
     title: 'SEO Tècnic',
     desc: 'Velocitat, estructura i indexació. Que Google pugui rastrejar i entendre el teu web sense obstacles.',
     href: '/serveis/seo-tecnic',
   },
   {
     num: '06',
-    icon: '🔗',
+    icon: '../src/assets/link-building.svg',
     title: 'Link Building',
     desc: 'Aconseguim que webs de qualitat parlin del teu negoci. Autoritat real que Google valora i premia.',
     href: '/serveis/linkbuilding',
@@ -72,13 +72,13 @@ const serveis = [
                bg-transparent hover:bg-white/3 transition-colors duration-300"
       >
         <!-- Número decoratiu -->
-        <span class="font-display text-5xl font-black text-white/5
+        <span class="font-display text-5xl font-gray-300 text-white/25
                      leading-none select-none">
           {num}
         </span>
 
         <!-- Icona -->
-        <span class="text-2xl -mt-2">{icon}</span>
+        <span class="text-2xl -mt-2"><img src={icon} alt={title} /></span>
 
         <!-- Títol -->
         <h3 class="font-display text-xl font-bold text-offwhite
