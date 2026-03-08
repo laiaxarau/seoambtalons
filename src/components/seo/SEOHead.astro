@@ -13,12 +13,6 @@ const {
   ogImage = '/images/og-default.jpg',
 } = Astro.props
 ---
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href={canonical} />
-
 <!-- Google Tag Manager via Partytown -->
 <script type="text/partytown">
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -28,6 +22,13 @@ const {
   })(window,document,'script','dataLayer','GTM-WJSWGBS7');
 </script>
 <!-- End Google Tag Manager -->
+ 
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonical} />
+
+
 
 <!-- Primary SEO -->
 <title>{title} | SEO amb Talons</title>
