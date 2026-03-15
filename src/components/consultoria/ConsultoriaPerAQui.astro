@@ -1,0 +1,68 @@
+---
+const yes = [
+  "Tens un negoci en marxa (servei, formació, productes digitals, botiga) i vols més visibilitat orgànica.",
+  "Vols entendre l'SEO per poder prendre decisions informades sense dependre de ningú.",
+  "Estàs disposada a treballar l'SEO de manera consistent i a llarg termini.",
+  "Vols una estratègia clara, no una llista interminable de tasques sense sentit.",
+  "Prefereixes invertir en una consultora especialitzada en dones emprenedores que t'entén de veritat.",
+]
+
+const no = [
+  "Busques resultats immediats. L'SEO és una inversió a mig-llarg termini.",
+  "No tens web pròpia o estàs en una fase molt inicial sense contingut.",
+  "Esperes que ho faci tot per tu sense implicar-te en el procés.",
+  "El teu negoci és 100% presencial i no tens cap presència digital.",
+]
+---
+
+<section class="px-8 lg:px-16 py-24">
+  <div class="max-w-4xl mx-auto">
+
+    <p class="eyebrow mb-3">Per a qui és</p>
+    <h2 class="font-display text-4xl lg:text-5xl font-black text-offwhite leading-tight mb-14">
+      Aquesta consultoria és per a tu<br>
+      <em class="italic text-coral">si...</em>
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-white/8 border border-white/8">
+
+      <!-- Sí -->
+      <div class="bg-[#0a0a0a] p-8 lg:p-10">
+        <h3 class="text-offwhite font-medium text-sm uppercase tracking-widest mb-6">
+          ✓ Et reconeixeràs aquí
+        </h3>
+        <ul class="flex flex-col gap-4">
+          {yes.map(item => (
+            <li class="flex gap-3 text-sm text-sand font-light leading-relaxed">
+              <span class="text-coral shrink-0 mt-0.5 font-medium">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- No -->
+      <div class="bg-dark-sand p-8 lg:p-10">
+        <h3 class="text-offwhite font-medium text-sm uppercase tracking-widest mb-6">
+          ✗ Potser no encaixem si...
+        </h3>
+        <ul class="flex flex-col gap-4">
+          {no.map(item => (
+            <li class="flex gap-3 text-sm text-sand font-light leading-relaxed">
+              <span class="text-white/30 shrink-0 mt-0.5 font-medium">✗</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- <style>
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-coral text-xs uppercase tracking-[0.14em] font-medium;
+  }
+  .eyebrow::before { content: ''; @apply block w-5 h-px bg-coral; }
+</style> -->

@@ -12,3 +12,14 @@
   --font-display: "Playfair Display", serif;
   --font-body: "DM Sans", sans-serif;
 }
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-coral text-xs
+           uppercase tracking-[0.14em] font-medium;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block w-5 h-px bg-coral;
+  }
+}

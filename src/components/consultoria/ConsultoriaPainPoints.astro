@@ -1,0 +1,54 @@
+---
+const points = [
+  {
+    num: '01',
+    title: 'Invisible a les cerques',
+    desc: 'Publiques contingut, però el teu web no apareix a Google ni en les cerques que haurien de portar-te clientes.',
+  },
+  {
+    num: '02',
+    title: 'Tecnicismes que bloquejen',
+    desc: 'Has llegit sobre SEO però et perds amb paraules com "backlinks", "indexació" o "interlinking". No saps per on començar.',
+  },
+  {
+    num: '03',
+    title: 'Temps i energia limitats',
+    desc: 'Ja tens prou feina portant el teu negoci. No et pots permetre perdre hores aplicant estratègies que potser no funcionen.',
+  },
+  {
+    num: '04',
+    title: 'Consells genèrics que no encaixen',
+    desc: 'Has vist tutorials i consells de "gurús", però cap s\'adapta a la teva realitat com a dona emprenedora amb un negoci local o en línia.',
+  },
+]
+---
+
+<section class="px-8 lg:px-16 py-24">
+  <div class="max-w-4xl mx-auto">
+
+    <p class="eyebrow mb-6">Et sona això?</p>
+
+    <h2 class="font-display text-4xl lg:text-5xl font-black text-offwhite
+               leading-tight italic mb-14">
+      Tens un negoci increïble,<br>però Google no ho sap.
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 border border-white/8 divide-y
+                divide-x-0 md:divide-x divide-white/8">
+      {points.map(({ num, title, desc }) => (
+        <div class="relative p-8 lg:p-10 even:border-t even:md:border-t-0
+                    even:md:border-l border-white/8 hover:bg-white/2
+                    transition-colors duration-300">
+          <!-- Número decoratiu -->
+          <span class="absolute top-6 right-8 font-display text-5xl font-black
+                       text-coral/15 leading-none select-none">
+            {num}
+          </span>
+          <h3 class="text-offwhite font-medium text-base mb-3">{title}</h3>
+          <p class="text-sand text-sm font-light leading-relaxed">{desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

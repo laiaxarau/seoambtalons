@@ -1,0 +1,66 @@
+---
+
+const items = [
+    {
+        icon: "🔍",
+        title: "Auditoria SEO completa",
+        desc: "Anàlisi tècnica del web, velocitat de càrrega, errors d'indexació, estructura d'URLs i experiència d'usuari.",
+    },
+    {
+        icon: "🎯",
+        title: "Investigació de paraules clau",
+        desc: "Trobem les cerques que fan les teves clientes ideals i les que realment et portaran trànsit qualificat.",
+    },
+    {
+        icon: "✍️",
+        title: "Estratègia de continguts",
+        desc: "Pla editorial basat en SEO: quins temes tractar, com estructurar els textos i com optimitzar el que ja tens.",
+    },
+    {
+        icon: "🔗",
+        title: "Anàlisi de la competència",
+        desc: "Detectem les oportunitats que la teva competència no aprofita i les convertim en el teu avantatge.",
+    },
+    {
+        icon: "📊",
+        title: "Configuració d'analítica",
+        desc: "Google Analytics 4 i Search Console configurats correctament per mesurar el que importa.",
+    },
+    {
+        icon: "📅",
+        title: "Seguiment mensual",
+        desc: "Revisem juntes l'evolució, resolem dubtes i ajustem l'estratègia cada mes per mantenir el creixement.",
+    },
+];
+---
+
+<section id="que-inclou" class="px-8 lg:px-16 py-24 bg-dark-sand">
+    <div class="max-w-4xl mx-auto">
+        <p class="eyebrow mb-3">Què inclou</p>
+        <h2
+            class="font-display text-4xl lg:text-5xl font-black text-offwhite leading-tight mb-16"
+        >
+            Tot el que necessites<br />
+            <em class="italic text-coral">per posicionar-te</em>
+        </h2>
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px
+                bg-white/8 border border-white/8"
+        >
+            {
+                items.map(({ icon, title, desc }) => (
+                    <div class="bg-dark-sand hover:bg-black/30 transition-colors duration-300 p-8">
+                        <div class="text-2xl mb-4">{icon}</div>
+                        <h3 class="font-display text-lg font-bold text-offwhite mb-3">
+                            {title}
+                        </h3>
+                        <p class="text-sand text-sm font-light leading-relaxed">
+                            {desc}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

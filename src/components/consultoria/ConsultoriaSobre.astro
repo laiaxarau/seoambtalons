@@ -1,0 +1,77 @@
+---
+const pillars = [
+  { icon: '🔑', label: 'Paraules clau' },
+  { icon: '✍️', label: 'Contingut' },
+  { icon: '📋', label: 'Posicions' },
+]
+---
+
+<section class="px-8 lg:px-16 py-24 bg-dark-sand">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16
+              items-center">
+
+    <!-- Esquerra — cercle visual -->
+    <div class="relative flex items-center justify-center">
+
+      <!-- Cercle exterior -->
+      <div class="w-72 h-72 lg:w-80 lg:h-80 rounded-full border border-coral/20
+                  relative flex items-center justify-center">
+
+        <!-- Cercle interior -->
+        <div class="w-48 h-48 lg:w-52 lg:h-52 rounded-full border border-coral/30
+                    bg-coral/5 flex flex-col items-center justify-center text-center">
+          <span class="font-display text-4xl font-black text-coral leading-none">
+            +78%
+          </span>
+          <span class="text-sand text-xs uppercase tracking-widest mt-2 leading-tight">
+            Trànsit orgànic<br>de mitjana
+          </span>
+        </div>
+
+        <!-- Pills flotants -->
+        {pillars.map(({ icon, label }, i) => (
+          <div
+            class:list={[
+              'absolute bg-dark-sand border border-white/10 rounded-full',
+              'px-4 py-2 flex items-center gap-2 text-offwhite text-xs font-medium',
+              'whitespace-nowrap',
+              i === 0 && 'top-4 right-0 translate-x-1/4',
+              i === 1 && 'left-0 top-1/2 -translate-x-1/3 -translate-y-1/2',
+              i === 2 && 'bottom-4 left-1/4',
+            ]}
+          >
+            <span>{icon}</span>
+            {label}
+          </div>
+        ))}
+
+        <!-- Gradient glow -->
+        <div class="absolute inset-0 rounded-full bg-coral/5 blur-2xl
+                    pointer-events-none -z-10"></div>
+      </div>
+    </div>
+
+    <!-- Dreta — text -->
+    <div>
+      <p class="eyebrow mb-4">Sobre la consultoria</p>
+      <h2 class="font-display text-4xl lg:text-5xl font-black text-offwhite
+                 leading-tight mb-6">
+        SEO que funciona<br>
+        <em class="italic text-coral">per al teu negoci</em>
+      </h2>
+      <p class="text-sand font-light leading-relaxed mb-5">
+        La consultoria SEO per a dones emprenedores és un servei 1:1 on analitzem
+        juntes la teva situació actual, definim les paraules clau que atreuen les
+        teves clientes ideals i creem un pla d'acció realista i adaptat a tu.
+      </p>
+      <p class="text-sand font-light leading-relaxed mb-10">
+        No és un curs genèric. No és una plantilla. És una estratègia feta a mida
+        per al teu negoci, el teu públic i el teu ritme de vida.
+      </p>
+      <a href="#reserva" class="btn-primary">
+        Vull saber més →
+      </a>
+    </div>
+
+  </div>
+</section>

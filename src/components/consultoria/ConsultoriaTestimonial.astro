@@ -1,0 +1,27 @@
+---
+const testimonial = {
+  quote: "Amb la Laia vaig entendre per primera vegada per què el meu web no apareixia a Google. En tres mesos vaig triplicar el trànsit orgànic i ara les meves clientes em troben elles soles.",
+  name: "Marta Puig",
+  role: "Nutricionista, Barcelona",
+  initial: "M",
+}
+---
+
+<section class="px-8 lg:px-16 py-20 bg-dark-sand">
+  <div class="max-w-2xl mx-auto text-center">
+    <blockquote class="font-display text-xl lg:text-2xl italic font-bold
+                        text-offwhite leading-snug mb-8">
+      "{testimonial.quote}"
+    </blockquote>
+    <div class="flex items-center justify-center gap-4">
+      <div class="w-10 h-10 rounded-full bg-coral flex items-center justify-center
+                  font-display font-bold text-white text-sm shrink-0">
+        {testimonial.initial}
+      </div>
+      <div class="text-left">
+        <p class="text-offwhite text-sm font-medium">{testimonial.name}</p>
+        <p class="text-sand text-xs">{testimonial.role}</p>
+      </div>
+    </div>
+  </div>
+</section>

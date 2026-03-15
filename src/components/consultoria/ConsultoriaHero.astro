@@ -1,0 +1,87 @@
+---
+const badges = [
+  'Estratègia personalitzada',
+  'Sense tecnicismes',
+  'Resultats reals',
+  'Acompanyament mensual',
+]
+---
+
+<section class="relative min-h-[92vh] flex items-center overflow-hidden py-32 lg:py-40">
+
+  <!-- Fons -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0"
+      style="background: radial-gradient(ellipse 60% 50% at 80% 40%, rgba(232,71,42,0.09) 0%, transparent 70%),
+                         radial-gradient(ellipse 40% 60% at 15% 70%, rgba(232,71,42,0.05) 0%, transparent 60%)">
+    </div>
+    <div class="absolute inset-0 grid-lines"></div>
+  </div>
+
+  <div class="relative z-10 px-8 lg:px-16 max-w-4xl">
+
+    <p class="eyebrow fade-up fade-up-1">Consultoria SEO</p>
+
+    <h1 class="font-display font-black leading-tight text-offwhite
+               text-[clamp(2.6rem,6vw,4.4rem)] mb-7 fade-up fade-up-2">
+      El SEO que el teu negoci<br>
+      necessita, <em class="italic text-coral-light">explicat com cal</em>
+    </h1>
+
+    <p class="text-sand font-light text-lg leading-relaxed max-w-xl mb-10 fade-up fade-up-3">
+      Consultoria SEO personalitzada per a dones emprenedores i freelances.
+      Apareix a Google, atreu les teves clientes ideals i fes créixer el teu
+      negoci amb estratègia i sense tecnicismes.
+    </p>
+
+    <!-- Badges -->
+    <div class="flex flex-wrap gap-2.5 mb-12 fade-up fade-up-3">
+      {badges.map(b => (
+        <span class="inline-flex items-center gap-1.5 bg-coral/10 border border-coral/20
+                     rounded-full px-4 py-1.5 text-xs text-offwhite">
+          <span class="w-1.5 h-1.5 rounded-full bg-coral animate-pulse shrink-0"></span>
+          {b}
+        </span>
+      ))}
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-wrap items-center gap-4 fade-up fade-up-4">
+      <a href="#reserva" class="btn-primary">
+        Reserva la sessió gratuïta →
+      </a>
+      <a href="#que-inclou" class="btn-secondary">
+        Veure què inclou
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- <style>
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-coral text-xs uppercase
+           tracking-[0.14em] font-medium mb-5;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block w-5 h-px bg-coral;
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(rgba(240,237,232,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,237,232,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .fade-up-1 { animation-delay: 0.1s; }
+  .fade-up-2 { animation-delay: 0.22s; }
+  .fade-up-3 { animation-delay: 0.34s; }
+  .fade-up-4 { animation-delay: 0.46s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style> -->

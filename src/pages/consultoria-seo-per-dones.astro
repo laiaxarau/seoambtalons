@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ConsultoriaHero from '../components/consultoria/ConsultoriaHero.astro'
+import ConsultoriaPainPoints from '../components/consultoria/ConsultoriaPainPoints.astro'
+import ConsultoriaSobre from '../components/consultoria/ConsultoriaSobre.astro'
+import ConsultoriaProces from '../components/consultoria/ConsultoriaProces.astro'
+import ConsultoriaInclou from '../components/consultoria/ConsultoriaInclou.astro'
+import ConsultoriaPerAQui from '../components/consultoria/ConsultoriaPerAQui.astro'
+import ConsultoriaTestimonial from '../components/consultoria/ConsultoriaTestimonial.astro'
+import ConsultoriaPricing from '../components/consultoria/ConsultoriaPricing.astro'
+import ConsultoriaFAQ from '../components/consultoria/ConsultoriaFAQ.astro'
+import ConsultoriaCTA from '../components/consultoria/ConsultoriaCTA.astro'
+---
+
+<BaseLayout
+  title="Consultoria SEO per a Dones Emprenedores"
+  description="Consultoria SEO personalitzada per a dones emprenedores i freelances. Apareix a Google, atreu les teves clientes ideals i fes créixer el teu negoci amb estratègia i sense tecnicismes."
+  canonical="https://seoambtalons.cat/consultoria-seo-per-dones"
+>
+  <!-- Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Consultoria SEO per a Dones Emprenedores",
+    "provider": {
+      "@type": "Person",
+      "name": "Laia",
+      "url": "https://seoambtalons.cat"
+    },
+    "description": "Consultoria SEO personalitzada per a dones emprenedores i freelances.",
+    "url": "https://seoambtalons.cat/consultoria-seo-per-dones",
+    "areaServed": { "@type": "Country", "name": "Espanya" },
+    "inLanguage": "ca",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "name": "Sessió de diagnosi gratuïta"
+    }
+  })} />
+
+  <ConsultoriaHero />
+  <ConsultoriaPainPoints />
+  <ConsultoriaSobre />
+  <ConsultoriaProces />
+  <ConsultoriaInclou />
+  <ConsultoriaPerAQui />
+  <ConsultoriaTestimonial />
+  <ConsultoriaPricing />
+  <ConsultoriaFAQ />
+  <ConsultoriaCTA />
+</BaseLayout>

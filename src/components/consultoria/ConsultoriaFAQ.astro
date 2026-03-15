@@ -1,0 +1,71 @@
+---
+const faqs = [
+  {
+    q: "Quant temps tarda a fer efecte l'SEO?",
+    a: "L'SEO és una inversió a mig-llarg termini. En general, els primers resultats visibles arriben entre els 3 i 6 mesos. Tot depèn de la competència del sector, l'estat actual del web i la constància en l'aplicació de l'estratègia. Et donarem expectatives realistes des del primer dia.",
+  },
+  {
+    q: "Necessito tenir coneixements tècnics previs?",
+    a: "No, en absolut. La consultoria està pensada per a dones emprenedores amb coneixements digitals intermedis. Explico cada concepte de manera clara i pràctica, i sempre treballem amb eines accessibles. Si saps gestionar el teu web, és suficient.",
+  },
+  {
+    q: "Funciona per a negocis locals?",
+    a: "Sí! El SEO local és una de les oportunitats més potents i menys aprofitades per a petits negocis. Si tens un negoci presencial o treballes en una zona geogràfica concreta, hi ha estratègies específiques molt efectives per aparèixer en les cerques del teu àrea.",
+  },
+  {
+    q: "Quin és el preu de la consultoria completa?",
+    a: "Cada projecte és diferent, per això comencem amb la sessió de diagnosi gratuïta. A partir d'aquí, et presento una proposta adaptada als teus objectius, el teu sector i el teu pressupost. Treballem tant en format de consultoria puntual com amb acompanyament mensual.",
+  },
+  {
+    q: "Fas tu la implementació o ho he de fer jo?",
+    a: "Depèn del que acordem. Puc fer-ho tot jo, acompanyar-te mentre ho fas tu, o ensenyar-te perquè siguis autònoma. El meu objectiu és que entenguis el que fem i per què, per tal que puguis mantenir i fer créixer la teva presència SEO de manera independent si ho desitges.",
+  },
+]
+---
+
+<section class="px-8 lg:px-16 py-24 bg-dark-sand">
+  <div class="max-w-2xl mx-auto">
+
+    <p class="eyebrow justify-center mb-3">Preguntes freqüents</p>
+    <h2 class="font-display text-4xl font-black text-offwhite text-center mb-12">
+      Resolem els teus dubtes
+    </h2>
+
+    <div class="flex flex-col divide-y divide-white/8">
+      {faqs.map(({ q, a }, i) => (
+        <div class="faq-item py-5" data-index={i}>
+          <button class="faq-btn w-full flex items-center justify-between gap-4
+                         text-left text-offwhite text-sm font-medium">
+            {q}
+            <span class="faq-icon text-coral shrink-0 text-xl leading-none
+                         transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300">
+            <p class="text-sand text-sm font-light leading-relaxed pt-4">{a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- <style>
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-coral text-xs uppercase tracking-[0.14em] font-medium;
+  }
+  .eyebrow::before { content: ''; @apply block w-5 h-px bg-coral; }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-item.open .faq-answer { max-height: 300px; }
+</style> -->
+
+<script>
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item')
+      const isOpen = item?.classList.contains('open')
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'))
+      if (!isOpen) item?.classList.add('open')
+    })
+  })
+</script>

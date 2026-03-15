@@ -1,0 +1,62 @@
+---
+const features = [
+  "Anàlisi ràpida del teu web",
+  "Identificació dels 3 punts de millora principals",
+  "Orientació sobre quina modalitat de treball s'adapta millor a tu",
+  "Resolució de dubtes en directe",
+]
+---
+
+<section id="reserva" class="px-8 lg:px-16 py-24">
+  <div class="max-w-md mx-auto text-center">
+
+    <p class="eyebrow justify-center mb-3">Inversió</p>
+    <h2 class="font-display text-4xl lg:text-5xl font-black text-offwhite leading-tight mb-4">
+      Comença amb una<br>sessió de diagnosi
+    </h2>
+    <p class="text-sand font-light mb-12">
+      Sense compromís. En 30 minuts descobreix on ets i on pots arribar amb SEO.
+    </p>
+
+    <div class="border border-white/8 bg-dark-sand p-8 text-left">
+
+      <div class="inline-block bg-coral/10 border border-coral/20 text-coral
+                  text-xs uppercase tracking-widest px-4 py-1.5 mb-6">
+        Sessió gratuïta · 30 min
+      </div>
+
+      <div class="font-display text-6xl font-black text-offwhite leading-none mb-1">
+        <span class="text-2xl align-top mt-3 inline-block">€</span>0
+      </div>
+      <p class="text-sand text-xs mb-8">Sense compromís · Per videollamada</p>
+
+      <ul class="flex flex-col gap-3 mb-8">
+        {features.map(f => (
+          <li class="flex gap-3 text-sm text-sand font-light">
+            <span class="text-coral shrink-0">→</span>
+            {f}
+          </li>
+        ))}
+      </ul>
+
+      
+        href="https://calendly.com/"
+        class="btn-primary w-full justify-center"
+        target="_blank"
+        rel="noopener"
+      >
+        Reserva la teva sessió gratuïta →
+      </a>
+      <p class="text-sand/50 text-xs text-center mt-4">
+        Places limitades · Es confirma per correu
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- <style>
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-coral text-xs uppercase tracking-[0.14em] font-medium;
+  }
+  .eyebrow::before { content: ''; @apply block w-5 h-px bg-coral; }
+</style> -->
