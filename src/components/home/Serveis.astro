@@ -1,55 +1,5 @@
 ---
-import auditSeo from "@assets/audit-seo.svg";
-import seoLocal from "@assets/seo-local.svg";
-import seoEcommerce from "@assets/seo-ecommerce.svg";
-import contentStrategy from "@assets/content-strategy.svg";
-import seoTechnical from "@assets/seo-technical.svg";
-import linkBuilding from "@assets/link-building.svg";
-
-const serveis = [
-  {
-    num: '01',
-    icon: auditSeo,
-    title: 'Auditoria SEO',
-    desc: "Analitzem el teu web de dalt a baix per detectar exactament per on s'escapa el teu tràfic i com recuperar-lo.",
-    href: '/serveis/auditoria-seo',
-  },
-  {
-    num: '02',
-    icon: seoLocal,
-    title: 'SEO Local',
-    desc: 'Apareix quan les teves clientes et busquen a prop. Optimitzem el teu Google Business i les paraules clau locals.',
-    href: '/serveis/seo-local',
-  },
-  {
-    num: '03',
-    icon: seoEcommerce,
-    title: 'SEO per a E-commerce',
-    desc: 'Posicionem les teves fitxes de producte i categories per atraure clients que ja volen comprar.',
-    href: '/serveis/seo-ecommerce',
-  },
-  {
-    num: '04',
-    icon: contentStrategy,
-    title: 'Estratègia de Continguts',
-    desc: 'Creem un pla de continguts que posiciona i connecta amb el teu públic. El teu blog, la teva veu.',
-    href: '/serveis/continguts-seo',
-  },
-  {
-    num: '05',
-    icon: seoTechnical,
-    title: 'SEO Tècnic',
-    desc: 'Velocitat, estructura i indexació. Que Google pugui rastrejar i entendre el teu web sense obstacles.',
-    href: '/serveis/seo-tecnic',
-  },
-  {
-    num: '06',
-    icon: linkBuilding,
-    title: 'Link Building',
-    desc: 'Aconseguim que webs de qualitat parlin del teu negoci. Autoritat real que Google valora i premia.',
-    href: '/serveis/linkbuilding',
-  },
-]
+import { servicesData } from '../../data/services';
 ---
 
 <section class="px-8 lg:px-16 py-24 lg:py-32">
@@ -72,7 +22,7 @@ const serveis = [
   <!-- Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
               border border-white/8 divide-x divide-y divide-white/8">
-    {serveis.map(({ num, icon, title, desc, href }) => (
+    {servicesData.map(({ num, icon, title, desc, href }) => (
       <a
         href={href}
         class="group relative flex flex-col gap-4 p-8 lg:p-10
