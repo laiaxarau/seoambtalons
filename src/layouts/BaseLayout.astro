@@ -1,17 +1,24 @@
 ---
-import SEOHead from '../components/seo/SEOHead.astro'
-import Nav from './Nav.astro'
-import CookieBanner from './CookieBanner.astro'
-import '../styles/global.css'
-import Footer from './Footer.astro'
+import SEOHead from "../components/seo/SEOHead.astro";
+import Nav from "./components/Nav.astro";
+import CookieBanner from "./components/CookieBanner.astro";
+import "../styles/global.css";
+import Footer from "./components/Footer.astro";
+import { siteConfig } from "../config/site";
+
 interface Props {
-  title: string
-  description: string
-  canonical?: string
-  ogImage?: string
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonical, ogImage } = Astro.props
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonical,
+  ogImage = siteConfig.ogImage,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -24,12 +31,16 @@ const { title, description, canonical, ogImage } = Astro.props
       ogImage={ogImage}
     />
   </head>
-  <body 
-  class="bg-[#0a0a0a] text-offwhite font-body antialiased">
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJSWGBS7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <body class="bg-[#0a0a0a] text-offwhite font-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WJSWGBS7"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <Nav />
     <main>
       <slot />
@@ -37,7 +48,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <Footer />
     <CookieBanner />
     <!-- Botó flotant cookies -->
-<!-- <button
+    <!-- <button
   onclick="window.dispatchEvent(new CustomEvent('open-cookies'))"
   class="fixed bottom-6 left-6 z-40 bg-dark-sand border border-white/10
          text-sand text-xs uppercase tracking-widest px-4 py-2.5
@@ -47,4 +58,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   🍪
 </button> -->
   </body>
-</html> 
+</html>

@@ -1,114 +1,72 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../layouts/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/common/FormattedDate.astro";
+import { sortPostsByDate } from "../../utils";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = sortPostsByDate(await getCollection("blog"));
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout
+  title="Blog - SEO amb Talons"
+  description="Articles i tutorials sobre SEO, posicionament web i estratègies digitals per a dones emprenedores."
+>
+  <section class="px-8 lg:px-16 py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto">
+      <!-- Capçalera -->
+      <div class="text-center mb-16">
+        <h1
+          class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-4"
+        >
+          Blog SEO amb Talons
+        </h1>
+        <p class="text-sand text-lg max-w-2xl mx-auto">
+          Articles, tutorials i estratègies per posicionar el teu negoci a
+          Google sense perdre el teu estil.
+        </p>
+      </div>
+
+      <!-- Grid de posts -->
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          posts.map((post) => (
+            <li class="group">
+              <a
+                href={`/blog/${post.id}/`}
+                class="block bg-white/5 border border-white/10 rounded-lg p-6
+                       hover:bg-white/10 hover:border-coral/50 transition-all duration-300"
+              >
+                {post.data.heroImage && (
+                  <div class="mb-4 overflow-hidden rounded-lg">
+                    <Image
+                      width={400}
+                      height={200}
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+                <h3
+                  class="font-display text-xl font-bold text-offwhite mb-2
+                           group-hover:text-coral transition-colors duration-300"
+                >
+                  {post.data.title}
+                </h3>
+                <p class="text-sand text-sm">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+                {post.data.description && (
+                  <p class="text-sand/80 text-sm mt-2 line-clamp-2">
+                    {post.data.description}
+                  </p>
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
