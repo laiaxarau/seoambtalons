@@ -1,11 +1,35 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import FormattedDate from "../../components/common/FormattedDate.astro";
-import { sortPostsByDate } from "../../utils";
+import { sanity } from "../../lib/sanity";
+import blogPlaceholder from "../../assets/blog-placeholder-about.jpg";
 
-const posts = sortPostsByDate(await getCollection("blog"));
+type Post = {
+  title: string;
+  slug: {
+    current: string;
+  };
+  publishedAt: string;
+  mainImage?: {
+    asset: {
+      url: string;
+    };
+  };
+  body: { children: { text: string }[] }[];
+};
+
+const posts: Post[] = await sanity.fetch(`
+  *[_type == "post"] | order(publishedAt desc){
+    title,
+    slug,
+    publishedAt,
+    mainImage,
+    body
+  }
+`);
+
+// const posts = sortPostsByDate(await getCollection("blog"));
 ---
 
 <BaseLayout
@@ -33,33 +57,47 @@ const posts = sortPostsByDate(await getCollection("blog"));
           posts.map((post) => (
             <li class="group">
               <a
-                href={`/blog/${post.id}/`}
+                href={`/blog/${post.slug.current}/`}
                 class="block bg-white/5 border border-white/10 rounded-lg p-6
                        hover:bg-white/10 hover:border-coral/50 transition-all duration-300"
               >
-                {post.data.heroImage && (
-                  <div class="mb-4 overflow-hidden rounded-lg">
+                <div class="mb-4 overflow-hidden rounded-lg">
+                  {post.mainImage ? (
                     <Image
                       width={400}
                       height={200}
-                      src={post.data.heroImage}
-                      alt={post.data.title}
+                      src={post.mainImage.asset.url}
+                      alt={post.title}
                       class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                  </div>
-                )}
+                  ) : (
+                    <Image
+                      width={400}
+                      height={200}
+                      src={blogPlaceholder}
+                      alt={post.title}
+                      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                </div>
                 <h3
                   class="font-display text-xl font-bold text-offwhite mb-2
                            group-hover:text-coral transition-colors duration-300"
                 >
-                  {post.data.title}
+                  {post.title}
                 </h3>
                 <p class="text-sand text-sm">
-                  <FormattedDate date={post.data.pubDate} />
+                  {post.publishedAt && (
+                    <FormattedDate date={new Date(post.publishedAt)} />
+                  )}
                 </p>
-                {post.data.description && (
+                {post.body.length > 0 && post.body[0]?.children?.length > 0 && (
                   <p class="text-sand/80 text-sm mt-2 line-clamp-2">
-                    {post.data.description}
+                    {post.body[0].children
+                      .map((child) => child.text)
+                      .join(" ")
+                      .slice(0, 150)}
+                    ...
                   </p>
                 )}
               </a>

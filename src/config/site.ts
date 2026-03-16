@@ -15,7 +15,7 @@ export const siteConfig = {
   // Autor i contacte
   author: {
     name: "Laia Xarau",
-    email: "hola@seoambtalons.cat",
+    email: "info@seoambtalons.cat",
     bio: "Especialista en SEO per a dones emprenedores",
   },
 
