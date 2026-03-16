@@ -10,11 +10,16 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/react": "^5.0.0",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@fontsource/roboto-flex": "^5.2.8",
+    "@portabletext/react": "^6.0.3",
+    "@sanity/client": "^7.17.0",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.2.1"
   },

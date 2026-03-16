@@ -1,0 +1,32 @@
+---
+const { children } = Astro.props;
+---
+
+<section class="px-8 lg:px-16 pb-32">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-[1fr_320px] gap-16">
+    <!-- Article -->
+    <article class="prose prose-invert max-w-none">
+      <slot />
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="hidden lg:block">
+      <div class="sticky top-32 space-y-8">
+        <!-- CTA -->
+        <div class="bg-white/5 border border-white/10 p-6">
+          <h3 class="text-offwhite font-semibold mb-3">
+            Vols millorar el teu SEO?
+          </h3>
+
+          <p class="text-sand text-sm mb-4">
+            Descobreix quines oportunitats té el teu negoci.
+          </p>
+
+          <a href="/contacte" class="btn-primary w-full text-center">
+            Demanar auditoria
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

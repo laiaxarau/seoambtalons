@@ -1,0 +1,25 @@
+---
+const {
+  title = "Google Core Update Març 2026",
+  date = "12 Març 2026",
+  readingTime = "6 min lectura",
+} = Astro.props;
+---
+
+<section class="pt-32 pb-20 px-8 lg:px-16 max-w-5xl mx-auto">
+  <p class="text-coral text-xs uppercase tracking-[0.18em] mb-6">
+    Novetats SEO
+  </p>
+
+  <h1
+    class="font-display text-4xl lg:text-6xl font-black leading-tight text-offwhite"
+  >
+    {title}
+  </h1>
+
+  <div class="flex items-center gap-4 mt-6 text-sand text-sm">
+    <span>{date}</span>
+    <span>•</span>
+    <span>{readingTime}</span>
+  </div>
+</section>
