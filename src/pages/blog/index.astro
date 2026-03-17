@@ -4,27 +4,14 @@ import { Image } from "astro:assets";
 import FormattedDate from "../../components/common/FormattedDate.astro";
 import { sanity } from "../../lib/sanity";
 import blogPlaceholder from "../../assets/blog-placeholder-about.jpg";
-
-type Post = {
-  title: string;
-  slug: {
-    current: string;
-  };
-  publishedAt: string;
-  mainImage?: {
-    asset: {
-      url: string;
-    };
-  };
-  body: { children: { text: string }[] }[];
-};
+import { type Post } from "../../types/index";
 
 const posts: Post[] = await sanity.fetch(`
   *[_type == "post"] | order(publishedAt desc){
     title,
     slug,
     publishedAt,
-    mainImage,
+    "mainImage": mainImage.asset->url,
     body
   }
 `);
@@ -66,7 +53,7 @@ const posts: Post[] = await sanity.fetch(`
                     <Image
                       width={400}
                       height={200}
-                      src={post.mainImage.asset.url}
+                      src={post.mainImage}
                       alt={post.title}
                       class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />

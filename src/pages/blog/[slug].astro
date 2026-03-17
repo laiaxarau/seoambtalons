@@ -5,20 +5,7 @@ import { Image } from "astro:assets";
 import FormattedDate from "../../components/common/FormattedDate.astro";
 import { sanity } from "../../lib/sanity";
 import blogPlaceholder from "../../assets/blog-placeholder-about.jpg";
-
-type Post = {
-  title: string;
-  slug: {
-    current: string;
-  };
-  publishedAt: string;
-  mainImage?: {
-    asset: {
-      url: string;
-    };
-  };
-  body: { children: { text: string }[] }[];
-};
+import { type Post } from "../../types/index";
 
 // ── Rutes dinàmiques ──
 export async function getStaticPaths() {
@@ -40,7 +27,7 @@ const post: Post = await sanity.fetch(
   `*[_type == "post" && slug.current == $slug][0]{
     title,
     publishedAt,
-    mainImage,
+    "mainImage": mainImage.asset->url,
     body
   }`,
   { slug },
@@ -59,7 +46,7 @@ const post: Post = await sanity.fetch(
           <Image
             width={1020}
             height={510}
-            src={post.mainImage.asset.url}
+            src={post.mainImage}
             alt={post.title}
             class="w-full rounded-lg shadow-2xl"
           />
@@ -96,7 +83,7 @@ const post: Post = await sanity.fetch(
     <div class="prose prose-lg prose-invert mx-auto">
       {
         post.body.map((block) => (
-          <p class="mb-4">
+          <p class="mb-4 text-xl">
             {block.children.map((child) => child.text).join("")}
           </p>
         ))
