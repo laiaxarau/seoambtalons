@@ -1,0 +1,54 @@
+---
+interface PainItem {
+  num: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow: string;
+  intro: string;
+  items: PainItem[];
+}
+
+const { eyebrow, intro, items } = Astro.props;
+---
+
+<section class="pain bg-stone-950 py-20 lg:py-32">
+  <div class="container max-w-4xl mx-auto px-6">
+    <div
+      class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-16 justify-center"
+    >
+      <span class="w-5 h-px bg-coral"></span>
+      {eyebrow}
+    </div>
+
+    <p
+      class="text-2xl lg:text-3xl font-display font-normal text-offwhite text-center max-w-3xl mx-auto mb-16 leading-relaxed italic"
+    >
+      {intro}
+    </p>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 border border-white/8 divide-x divide-y divide-white/8"
+    >
+      {
+        items.map((item) => (
+          <div class="group relative flex flex-col gap-4 p-8 lg:p-10 bg-transparent hover:bg-white/3 transition-colors duration-300">
+            <span class="font-display text-5xl text-white/25 leading-none select-none">
+              {item.num}
+            </span>
+
+            <h3 class="font-display text-xl font-bold text-offwhite group-hover:text-coral transition-colors duration-300">
+              {item.title}
+            </h3>
+
+            <p class="text-sand text-sm font-light leading-relaxed flex-1">
+              {item.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

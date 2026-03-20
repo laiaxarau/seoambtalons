@@ -1,0 +1,61 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  yes: string[];
+  no: string[];
+}
+
+const { eyebrow, title, yes, no } = Astro.props;
+---
+
+<section class="forwho bg-stone-950 py-20 lg:py-32">
+  <div class="container max-w-5xl mx-auto px-6">
+    <div
+      class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-12"
+    >
+      <span class="w-5 h-px bg-coral"></span>
+      {eyebrow}
+    </div>
+    <h2 class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-16">
+      {title}
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <div>
+        <h3 class="text-lg font-medium text-offwhite mb-8">
+          ✓ Et reconeixeràs aquí
+        </h3>
+        <ul class="space-y-6">
+          {
+            yes.map((item) => (
+              <li class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-coral/15 flex items-center justify-center text-coral text-sm font-bold shrink-0">
+                  ✓
+                </span>
+                <span class="text-sand text-sm leading-relaxed">{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-medium text-offwhite mb-8">
+          ✗ Potser no encaixem si...
+        </h3>
+        <ul class="space-y-6">
+          {
+            no.map((item) => (
+              <li class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-stone-500/15 flex items-center justify-center text-stone-500 text-sm font-bold shrink-0">
+                  ✗
+                </span>
+                <span class="text-sand text-sm leading-relaxed">{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

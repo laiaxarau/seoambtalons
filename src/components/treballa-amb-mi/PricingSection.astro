@@ -1,0 +1,54 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  card: {
+    badge: string;
+    price: string;
+    currency: string;
+    note: string;
+    features: string[];
+    cta: { text: string; href: string };
+    noteCta: string;
+  };
+}
+
+const { eyebrow, title, subtitle, card } = Astro.props;
+---
+
+<section class="pricing bg-stone-900 py-20 lg:py-32" id="sessio-gratuita">
+  <div class="container max-w-2xl mx-auto px-6">
+    <div class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6 justify-center">
+      <span class="w-5 h-px bg-coral"></span>
+      {eyebrow}
+    </div>
+    <h2 class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-6 text-center">
+      {title}
+    </h2>
+    <p class="text-base text-sand text-center mb-12">{subtitle}</p>
+
+    <div class="bg-black border border-white/10 rounded p-8 lg:p-12 relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-coral"></div>
+      <div class="inline-block bg-coral/15 border border-coral/3 rounded-full px-4 py-2 text-coral text-sm mb-6">
+        {card.badge}
+      </div>
+      <div class="font-display text-6xl font-bold text-offwhite mb-2">
+        <span class="text-3xl text-coral align-top">{card.currency}</span>{card.price}
+      </div>
+      <p class="text-stone-500 text-sm mb-8">{card.note}</p>
+      <ul class="space-y-3 mb-8">
+        {card.features.map((feature) => (
+          <li class="flex items-start gap-3 text-sm text-sand">
+            <span class="text-coral mt-0.5">→</span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+      <a href={card.cta.href} class="block w-full bg-coral text-white text-center py-4 rounded font-medium hover:bg-coral-light transition-colors">
+        {card.cta.text}
+      </a>
+      <p class="text-center text-stone-500 text-xs mt-4">{card.noteCta}</p>
+    </div>
+  </div>
+</section>
