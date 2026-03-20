@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import biciImage from "../../assets/images/bici.png"; // Importa la imatge
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  paragraphs: string[];
+}
+
+const { eyebrow, title, paragraphs } = Astro.props;
+---
+
+<section class="bici bg-stone-950 py-20 lg:py-32">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Visual -->
+      <div
+        class="relative h-80 border border-white/10 rounded bg-stone-900 flex items-center justify-center overflow-hidden"
+      >
+        <Image
+          width={400}
+          height={200}
+          src={biciImage}
+          alt="Bici de muntanya"
+          class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute top-4 right-4 inline-flex items-center gap-2 bg-black/80 border border-white/20 rounded-full px-3 py-2 text-xs text-offwhite z-10"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-coral animate-pulse"></span>
+          Bici de muntanya
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <div
+          class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6"
+        >
+          <span class="w-5 h-px bg-coral"></span>
+          {eyebrow}
+        </div>
+        <h2
+          class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-6 leading-tight"
+        >
+          {title}
+        </h2>
+        <div class="space-y-4 text-base text-sand leading-relaxed font-light">
+          {paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

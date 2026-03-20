@@ -17,6 +17,12 @@ export const siteConfig = {
     name: "Laia Xarau",
     email: "info@seoambtalons.cat",
     bio: "Especialista en SEO per a dones emprenedores",
+    knowsAbout: [
+      "SEO",
+      "Estratègia de continguts",
+      "SEO tècnic",
+      "Màrqueting digital",
+    ],
   },
 
   // Xarxes socials
