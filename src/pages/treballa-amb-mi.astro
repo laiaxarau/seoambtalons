@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/treballa-amb-mi/HeroSection.astro";
+import PainSection from "../components/treballa-amb-mi/PainSection.astro";
+import FormatsSection from "../components/treballa-amb-mi/FormatsSection.astro";
+import ProcessSection from "../components/treballa-amb-mi/ProcessSection.astro";
+import ForWhoSection from "../components/treballa-amb-mi/ForWhoSection.astro";
+import TestimonialSection from "../components/treballa-amb-mi/TestimonialSection.astro";
+import PricingSection from "../components/treballa-amb-mi/PricingSection.astro";
+import FaqSection from "../components/treballa-amb-mi/FaqSection.astro";
+import CtaSection from "../components/treballa-amb-mi/CtaSection.astro";
+import ServiceSchema from "../components/seo/ServiceSchema.astro";
+
+import {
+  treballaHero,
+  treballaPain,
+  treballaFormats,
+  treballaProcess,
+  treballaForWho,
+  treballaTestimonial,
+  treballaPricing,
+  treballaFaq,
+  treballaFinalCta,
+} from "../data/treballa-amb-mi";
+---
+
+<BaseLayout
+  title="Treballa amb mi | SEO amb Talons"
+  description="Tria com vols treballar el SEO del teu negoci. Sessió estratègica, pack, servei mensual, mentoria o SEO per a llançament de curs. Formats adaptats a dones emprenedores."
+  canonical="https://seoambtalons.cat/treballa-amb-mi"
+>
+  <HeroSection {...treballaHero} />
+  <PainSection {...treballaPain} />
+  <FormatsSection
+    header={treballaFormats.header}
+    formats={treballaFormats.formats}
+  />
+  <ProcessSection
+    header={treballaProcess.header}
+    steps={treballaProcess.steps}
+  />
+  <ForWhoSection {...treballaForWho} />
+  <TestimonialSection {...treballaTestimonial} />
+  <PricingSection {...treballaPricing} />
+  <FaqSection header={treballaFaq.header} items={treballaFaq.items} />
+  <CtaSection {...treballaFinalCta} />
+
+  <ServiceSchema />
+</BaseLayout>

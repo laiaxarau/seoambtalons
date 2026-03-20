@@ -11,8 +11,8 @@ export const navigationConfig = {
     { label: "Serveis", href: "/serveis", icon: "services" },
     { label: "Per a qui", href: "/per-a-qui", icon: "users" },
     { label: "Qui sóc", href: "/about", icon: "success" },
+    { label: "Treballa amb mi", href: "/treballa-amb-mi", icon: "contact" },
     { label: "Blog", href: "/blog", icon: "blog" },
-    { label: "Contacte", href: "/contacte", icon: "contact" },
   ] as NavItem[],
 
   footer: [
