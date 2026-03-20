@@ -10,7 +10,7 @@ export const navigationConfig = {
     { label: "Inici", href: "/", icon: "home" },
     { label: "Serveis", href: "/serveis", icon: "services" },
     { label: "Per a qui", href: "/per-a-qui", icon: "users" },
-    { label: "Casos d'èxit", href: "/casos-exit", icon: "success" },
+    { label: "Qui sóc", href: "/about", icon: "success" },
     { label: "Blog", href: "/blog", icon: "blog" },
     { label: "Contacte", href: "/contacte", icon: "contact" },
   ] as NavItem[],

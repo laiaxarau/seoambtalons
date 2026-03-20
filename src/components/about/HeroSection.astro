@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import laiaImage from "../../assets/images/laia.png"; // Importa la imatge
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  cta: { text: string; href: string; variant: string }[];
+}
+
+const { eyebrow, title, subtitle, cta } = Astro.props;
+---
+
+<section
+  class="hero min-h-[88vh] flex items-center relative overflow-hidden py-25 pb-20"
+>
+  <div
+    class="absolute inset-0 bg-linear-to-br from-coral/10 via-transparent to-transparent pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background-image: linear-gradient(rgba(240,237,232,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(240,237,232,0.025) 1px, transparent 1px); background-size: 60px 60px;"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-16 lg:gap-16 items-center"
+    >
+      <div>
+        <div
+          class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6 animate-fade-up"
+          style="animation-delay: 0.1s;"
+        >
+          <span class="w-5 h-px bg-coral"></span>
+          {eyebrow}
+        </div>
+
+        <h1
+          class="text-5xl lg:text-6xl font-display font-bold text-offwhite mb-6 leading-tight animate-fade-up max-w-2xl"
+          style="animation-delay: 0.22s;"
+        >
+          {title}
+          <em class="text-coral-light italic">ben feta</em>
+        </h1>
+
+        <p
+          class="text-base lg:text-lg text-sand max-w-xl mb-10 leading-relaxed animate-fade-up font-light"
+          style="animation-delay: 0.34s;"
+        >
+          {subtitle}
+        </p>
+
+        <div
+          class="flex flex-wrap gap-4 animate-fade-up"
+          style="animation-delay: 0.46s;"
+        >
+          {
+            cta.map((item) => (
+              <a
+                href={item.href}
+                class={`inline-flex items-center gap-2 px-8 py-4 rounded text-base font-medium transition-all ${
+                  item.variant === "primary"
+                    ? "bg-coral text-white hover:bg-coral-light hover:-translate-y-0.5"
+                    : "text-offwhite border border-white/10 hover:border-coral hover:text-coral"
+                }`}
+              >
+                {item.text}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div
+        class="hidden lg:block shrink-0 animate-fade-up"
+        style="animation-delay: 0.34s;"
+      >
+        <div
+          class="w-80 h-100 rounded border border-white/10 bg-stone-900 flex flex-col items-center justify-center gap-3 relative overflow-hidden"
+        >
+          <Image
+            width={400}
+            height={200}
+            src={laiaImage}
+            alt="Laia Xarau, fundadora de SEO amb Talons"
+            class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+</style>
