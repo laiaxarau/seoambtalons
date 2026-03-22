@@ -105,34 +105,34 @@ export const treballaFormats = {
       cta: { text: "Veure detalls", href: "/treballa-amb-mi/seo-mensual" },
       featured: false,
     },
-    {
-      tag: "Formació 1:1",
-      num: "04",
-      title: "Mentoria SEO per a emprenedores",
-      description:
-        "Aprens a fer el SEO del teu negoci tu mateixa. Sessions de treball on t'ensenyo exactament el que necessites saber, amb casos pràctics del teu propi web. L'objectiu: que siguis autònoma i no depenguis de ningú.",
-      details: [
-        "Sessions individuals personalitzades",
-        "Materials de treball inclosos",
-        "Ideal si vols aprendre fent",
-      ],
-      cta: { text: "Veure detalls", href: "/treballa-amb-mi/mentoria-seo" },
-      featured: false,
-    },
-    {
-      tag: "Especialitzat",
-      num: "05",
-      title: "SEO per a llançament de curs",
-      description:
-        "Estàs a punt de llançar un curs o programa en línia i vols que Google treballi a favor teu des del primer dia. Estratègia SEO específica per a creadores de contingut i formadores: pàgina de vendes, blog de suport i paraules clau del sector formatiu.",
-      details: [
-        "Estratègia prèvia al llançament",
-        "Optimització de pàgina de vendes",
-        "Ideal per a formadores i creadores",
-      ],
-      cta: { text: "Veure detalls", href: "/treballa-amb-mi/seo-llancament" },
-      featured: false,
-    },
+    // {
+    //   tag: "Formació 1:1",
+    //   num: "04",
+    //   title: "Mentoria SEO per a emprenedores",
+    //   description:
+    //     "Aprens a fer el SEO del teu negoci tu mateixa. Sessions de treball on t'ensenyo exactament el que necessites saber, amb casos pràctics del teu propi web. L'objectiu: que siguis autònoma i no depenguis de ningú.",
+    //   details: [
+    //     "Sessions individuals personalitzades",
+    //     "Materials de treball inclosos",
+    //     "Ideal si vols aprendre fent",
+    //   ],
+    //   cta: { text: "Veure detalls", href: "/treballa-amb-mi/mentoria-seo" },
+    //   featured: false,
+    // },
+    // {
+    //   tag: "Especialitzat",
+    //   num: "05",
+    //   title: "SEO per a llançament de curs",
+    //   description:
+    //     "Estàs a punt de llançar un curs o programa en línia i vols que Google treballi a favor teu des del primer dia. Estratègia SEO específica per a creadores de contingut i formadores: pàgina de vendes, blog de suport i paraules clau del sector formatiu.",
+    //   details: [
+    //     "Estratègia prèvia al llançament",
+    //     "Optimització de pàgina de vendes",
+    //     "Ideal per a formadores i creadores",
+    //   ],
+    //   cta: { text: "Veure detalls", href: "/treballa-amb-mi/seo-llancament" },
+    //   featured: false,
+    // },
   ],
 };
 
@@ -268,6 +268,6 @@ export const treballaFinalCta = {
       href: "#sessio-gratuita",
       variant: "primary",
     },
-    { text: "Explorar serveis SEO", href: "/serveis", variant: "ghost" },
+    // { text: "Explorar serveis SEO", href: "/serveis", variant: "ghost" },
   ],
 };

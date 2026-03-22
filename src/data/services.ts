@@ -1,10 +1,10 @@
 import type { Service } from "../types/service.types";
-import auditSeo from "../assets/audit-seo.svg";
-import seoLocal from "../assets/seo-local.svg";
-import seoEcommerce from "../assets/seo-ecommerce.svg";
-import contentStrategy from "../assets/content-strategy.svg";
-import seoTechnical from "../assets/seo-technical.svg";
-import linkBuilding from "../assets/link-building.svg";
+import auditSeo from "../assets/icons/audit-seo.svg";
+import seoLocal from "../assets/icons/seo-local.svg";
+import seoEcommerce from "../assets/icons/seo-ecommerce.svg";
+import contentStrategy from "../assets/icons/content-strategy.svg";
+import seoTechnical from "../assets/icons/seo-technical.svg";
+import linkBuilding from "../assets/icons/link-building.svg";
 
 /**
  * Dades dels serveis oferts

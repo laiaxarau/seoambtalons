@@ -14,20 +14,23 @@ import { servicesData } from '../../data/services';
         <em class="italic text-coral">créixer</em> el teu negoci
       </h2>
     </div>
-    <a href="/serveis" class="btn-secondary shrink-0">
+    <!-- <a href="/serveis" class="btn-secondary shrink-0">
       Veure tots els serveis →
-    </a>
+    </a> -->
   </div>
 
   <!-- Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
               border border-white/8 divide-x divide-y divide-white/8">
     {servicesData.map(({ num, icon, title, desc, href }) => (
-      <a
-        href={href}
-        class="group relative flex flex-col gap-4 p-8 lg:p-10
-               bg-transparent hover:bg-white/3 transition-colors duration-300"
-      >
+      // <a
+      //   href={href}
+      //   class="group relative flex flex-col gap-4 p-8 lg:p-10
+      //          bg-transparent hover:bg-white/3 transition-colors duration-300"
+      // >
+      <div class="group relative flex flex-col gap-4 p-8 lg:p-10
+                bg-transparent hover:bg-white/3 transition-colors duration-300">
+
         <!-- Número decoratiu -->
         <span class="font-display text-5xl font-gray-300 text-white/25
                      leading-none select-none">
@@ -53,9 +56,10 @@ import { servicesData } from '../../data/services';
                      transition-all duration-300
                      group-hover:text-coral group-hover:translate-x-1
                      group-hover:-translate-y-1">
-          ↗
+          {/* ↗ */}
         </span>
-      </a>
+        </div>
+      // </a>
     ))}
   </div>
 
