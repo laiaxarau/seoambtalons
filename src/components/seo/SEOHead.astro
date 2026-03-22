@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from "src/config/site";
 import type { HeadProps as Props } from "../../types/head.types";
 
 const {
@@ -29,7 +30,7 @@ const {
 <link rel="canonical" href={canonical} />
 
 <!-- Primary SEO -->
-<title>{title} | SEO amb Talons</title>
+<title>{title} | {siteConfig.title}</title>
 <meta name="description" content={description} />
 
 <!-- Open Graph -->

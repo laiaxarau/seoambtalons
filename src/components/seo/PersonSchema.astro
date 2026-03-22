@@ -6,9 +6,15 @@ const data = {
   "@type": "Person",
   name: siteConfig.author.name,
   url: siteConfig.url,
-  jobTitle: "Consultora SEO",
+  jobTitle: siteConfig.author.jobTitle,
   description: siteConfig.description,
-  sameAs: [siteConfig.url],
+  sameAs: [
+    siteConfig.url,
+    siteConfig.author.personalWebsite,
+    siteConfig.social.instagram,
+    siteConfig.social.twitter,
+    siteConfig.social.linkedin,
+  ],
   knowsAbout: siteConfig.author.knowsAbout,
   worksFor: { name: siteConfig.name, url: siteConfig.url },
 };
