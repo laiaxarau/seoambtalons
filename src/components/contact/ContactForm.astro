@@ -1,0 +1,147 @@
+---
+
+---
+
+<section class="contact-form py-24 lg:py-32 bg-stone-950">
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2
+        class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-6 leading-tight"
+      >
+        Contacta amb mi
+      </h2>
+      <p class="text-base lg:text-lg text-sand leading-relaxed font-light">
+        Tens alguna pregunta? Escriu-me i et respondré el més aviat possible.
+      </p>
+    </div>
+
+    <form id="contact-form" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-sand mb-2"
+            >Nom *</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50"
+            placeholder="El teu nom"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-sand mb-2"
+            >Correu electrònic *</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50"
+            placeholder="elteu@email.com"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="subject" class="block text-sm font-medium text-sand mb-2"
+          >Assumpte</label
+        >
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50"
+          placeholder="Assumpte del missatge"
+        />
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-sand mb-2"
+          >Missatge *</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          required
+          class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50 resize-vertical"
+          placeholder="Escriu el teu missatge aquí..."></textarea>
+      </div>
+
+      <!-- Missatge d'èxit/error -->
+      <div id="form-message" class="text-center hidden">
+        <p class="text-sm"></p>
+      </div>
+
+      <div class="text-center">
+        <button
+          type="submit"
+          id="submit-btn"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-coral text-white rounded-lg text-base font-medium hover:bg-coral-light transition-colors hover:-translate-y-0.5 transform"
+        >
+          <span id="btn-text">Enviar missatge</span>
+          <div
+            id="btn-spinner"
+            class="hidden w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+          >
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector<HTMLButtonElement>("#submit-btn")!;
+    const btnText = form.querySelector<HTMLSpanElement>("#btn-text")!;
+    const btnSpinner = form.querySelector<HTMLDivElement>("#btn-spinner")!;
+    const formMessage = form.querySelector<HTMLDivElement>("#form-message")!;
+    const messageP = formMessage.querySelector<HTMLParagraphElement>("p")!;
+
+    if (!submitBtn || !btnText || !btnSpinner || !formMessage || !messageP)
+      return;
+
+    submitBtn.disabled = true;
+    btnText.classList.add("hidden");
+    btnSpinner.classList.remove("hidden");
+
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) throw new Error();
+
+      messageP.textContent = "Missatge enviat correctament!";
+      messageP.className = "text-sm text-green-400";
+      form.reset();
+    } catch {
+      messageP.textContent = "Error enviant el missatge";
+      messageP.className = "text-sm text-red-400";
+    }
+
+    formMessage.classList.remove("hidden");
+    submitBtn.disabled = false;
+    btnText.classList.remove("hidden");
+    btnSpinner.classList.add("hidden");
+  });
+</script>

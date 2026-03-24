@@ -13,7 +13,7 @@ export const company = [
   // { label: "Blog", href: "/blog" },
   // { label: "Recursos", href: "/recursos" },
   { label: "Treballa amb mi", href: "/treballa-amb-mi" },
-  // { label: "Contacte", href: "/contacte" },
+  { label: "Contacte", href: "/contacte" },
 ];
 
 export const legal = [

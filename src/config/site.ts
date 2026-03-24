@@ -2,6 +2,7 @@
  * Configuració global del lloc web
  * Centralitza totes les dades i constants del projecte
  */
+import favicon from "../assets/icons/favicon.svg";
 
 export const siteConfig = {
   // Informació bàsica
@@ -11,6 +12,7 @@ export const siteConfig = {
     "SEO estratègic per a dones emprenedores que volen créixer a Google sense perdre el seu estil.",
   url: "https://seoambtalons.cat",
   ogImage: "/images/og-default.jpg",
+  favicon: favicon,
 
   // Autor i contacte
   author: {
