@@ -1,0 +1,103 @@
+---
+// src/pages/blog/[slug].astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import FormattedDate from "../../components/common/FormattedDate.astro";
+import { sanity } from "../../lib/sanity";
+import blogPlaceholder from "../../assets/blog-placeholder-about.jpg";
+import { type Post } from "../../types/index";
+
+// ── Rutes dinàmiques ──
+export async function getStaticPaths() {
+  const posts = await sanity.fetch(`
+    *[_type == "post"]{
+      slug
+    }
+  `);
+
+  return posts.map((post: any) => ({
+    params: { slug: post.slug.current },
+  }));
+}
+
+// ── Obtenir el post segons el slug ──
+const { slug } = Astro.params;
+
+const post: Post = await sanity.fetch(
+  `*[_type == "post" && slug.current == $slug][0]{
+    title,
+    publishedAt,
+    "mainImage": mainImage.asset->url,
+    body
+  }`,
+  { slug },
+);
+---
+
+<BaseLayout
+  title={post.title}
+  description={`Llegeix l'article complet: ${post.title}`}
+>
+  <article class="max-w-4xl mx-auto px-8 lg:px-16 py-24 lg:py-32">
+    <!-- Hero Image -->
+    <div class="mb-12">
+      {
+        post.mainImage ? (
+          <Image
+            width={1020}
+            height={510}
+            src={post.mainImage}
+            alt={post.title}
+            class="w-full rounded-lg shadow-2xl"
+          />
+        ) : (
+          <Image
+            width={1020}
+            height={510}
+            src={blogPlaceholder}
+            alt={post.title}
+            class="w-full rounded-lg shadow-2xl"
+          />
+        )
+      }
+    </div>
+
+    <!-- Article Header -->
+    <header class="text-center mb-16">
+      <div class="text-sand text-sm uppercase tracking-widest mb-4">
+        {
+          post.publishedAt && (
+            <FormattedDate date={new Date(post.publishedAt)} />
+          )
+        }
+      </div>
+      <h1
+        class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-6"
+      >
+        {post.title}
+      </h1>
+      <div class="w-24 h-px bg-coral mx-auto"></div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="prose prose-lg prose-invert mx-auto">
+      {
+        post.body.map((block) => (
+          <p class="mb-4 text-xl">
+            {block.children.map((child) => child.text).join("")}
+          </p>
+        ))
+      }
+    </div>
+
+    <!-- Back to Blog -->
+    <div class="mt-16 text-center">
+      <a
+        href="/blog"
+        class="inline-block bg-coral text-white px-6 py-3 rounded-lg font-semibold transition hover:bg-red-600"
+      >
+        ← Tornar al Blog
+      </a>
+    </div>
+  </article>
+</BaseLayout>

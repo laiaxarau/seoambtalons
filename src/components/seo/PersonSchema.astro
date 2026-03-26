@@ -1,0 +1,23 @@
+---
+import { siteConfig } from "../../config/site";
+
+const data = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.author.name,
+  url: siteConfig.url,
+  jobTitle: siteConfig.author.jobTitle,
+  description: siteConfig.description,
+  sameAs: [
+    siteConfig.url,
+    siteConfig.author.personalWebsite,
+    siteConfig.social.instagram,
+    siteConfig.social.twitter,
+    siteConfig.social.linkedin,
+  ],
+  knowsAbout: siteConfig.author.knowsAbout,
+  worksFor: { name: siteConfig.name, url: siteConfig.url },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

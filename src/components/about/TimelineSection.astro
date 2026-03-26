@@ -1,0 +1,54 @@
+---
+interface TimelineItem {
+  year: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="timeline py-20 lg:py-32">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="mb-14">
+      <div
+        class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6"
+      >
+        <span class="w-5 h-px bg-coral"></span>
+        Recorregut
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-display font-bold text-offwhite">
+        D'on vinc i on soc
+      </h2>
+    </div>
+
+    <div class="relative pl-8 space-y-12">
+      <!-- Línea vertical -->
+      <div
+        class="absolute left-0 top-2 bottom-0 w-px bg-linear-to-b from-coral to-coral/10"
+      >
+      </div>
+
+      {
+        items.map((item) => (
+          <div class="relative">
+            <div class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-coral border-2 border-gray-950" />
+            <div class="text-xs uppercase tracking-widest text-coral font-medium mb-2">
+              {item.year}
+            </div>
+            <h3 class="text-base font-medium text-offwhite mb-2">
+              {item.title}
+            </h3>
+            <p class="text-sm text-sand leading-relaxed max-w-md">
+              {item.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

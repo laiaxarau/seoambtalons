@@ -1,0 +1,80 @@
+---
+interface Format {
+  tag: string;
+  num: string;
+  title: string;
+  description: string;
+  details: string[];
+  cta: { text: string; href: string };
+  featured: boolean;
+}
+
+interface Props {
+  header: { eyebrow: string; title: string; subtitle: string };
+  formats: Format[];
+}
+
+const { header, formats } = Astro.props;
+---
+
+<section class="formats py-20 lg:py-32" id="formats">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div
+        class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6 justify-center"
+      >
+        <span class="w-5 h-px bg-coral"></span>
+        {header.eyebrow}
+      </div>
+      <h2
+        class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-6"
+      >
+        {header.title}
+      </h2>
+      <p class="text-base text-sand max-w-2xl mx-auto">{header.subtitle}</p>
+    </div>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10"
+    >
+      {
+        formats.map((format) => (
+          <div
+            class={`format-card bg-stone-900 px-8 py-12 md:py-16 relative overflow-hidden transition-all duration-300 ${
+              format.featured
+                ? "border border-coral shadow-lg shadow-coral/20 scale-105 z-10"
+                : "border border-white/10 hover:border-white/20"
+            }`}
+          >
+            <div class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-4">
+              {format.featured && (
+                <span class="w-1.5 h-1.5 rounded-full bg-coral animate-pulse" />
+              )}
+              {format.tag}
+            </div>
+            <div class="absolute top-12 right-8 text-4xl font-display font-bold text-coral/8">
+              {format.num}
+            </div>
+            <h3 class="text-xl font-display font-bold text-offwhite mb-4">
+              {format.title}
+            </h3>
+            <p class="text-sm text-sand leading-relaxed mb-6">
+              {format.description}
+            </p>
+            <div class="space-y-2 mb-6">
+              {format.details.map((detail) => (
+                <div class="flex items-center gap-3 text-xs text-muted">
+                  <span class="text-coral">→</span>
+                  {detail}
+                </div>
+              ))}
+            </div>
+            {/* <a href={format.cta.href} class="inline-flex items-center gap-2 text-offwhite text-sm font-medium hover:text-coral transition-colors">
+            {format.cta.text} →
+          </a> */}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

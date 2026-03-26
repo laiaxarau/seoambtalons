@@ -1,0 +1,72 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  header: { eyebrow: string; title: string };
+  items: FaqItem[];
+}
+
+const { header, items } = Astro.props;
+---
+
+<section class="faq bg-stone-950 py-20 lg:py-32">
+  <div class="container max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div
+        class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6 justify-center"
+      >
+        <span class="w-5 h-px bg-coral"></span>
+        {header.eyebrow}
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-display font-bold text-offwhite">
+        {header.title}
+      </h2>
+    </div>
+
+    <div class="space-y-0">
+      {
+        items.map((item) => (
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-q w-full text-left py-6 flex justify-between items-center gap-4 text-offwhite hover:text-white transition-colors">
+              <span class="text-base font-medium">{item.question}</span>
+              <span class="faq-arrow w-6 h-6 border border-white/10 rounded-full flex items-center justify-center text-coral text-sm transition-transform">
+                +
+              </span>
+            </button>
+            <div class="faq-a max-h-0 overflow-hidden transition-all duration-300">
+              <p class="pb-6 text-sand text-sm leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll(".faq-q").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const faqItem = btn.closest(".faq-item");
+      if (!faqItem) return;
+      const isOpen = faqItem.classList.contains("open");
+      document
+        .querySelectorAll(".faq-item.open")
+        .forEach((i) => i.classList.remove("open"));
+      if (!isOpen) faqItem.classList.add("open");
+    });
+  });
+</script>
+
+<style>
+  .faq-item.open .faq-arrow {
+    transform: rotate(45deg);
+  }
+  .faq-item.open .faq-a {
+    max-height: 300px;
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/about/HeroSection.astro";
+import StatsSection from "../components/about/StatsSection.astro";
+import IntroSection from "../components/about/IntroSection.astro";
+import TimelineSection from "../components/about/TimelineSection.astro";
+import ValorsSection from "../components/about/ValorsSection.astro";
+import BiciSection from "../components/about/BiciSection.astro";
+import CtaSection from "../components/about/CtaSection.astro";
+import PersonSchema from "../components/seo/PersonSchema.astro";
+
+import {
+  aboutHero,
+  aboutStats,
+  aboutIntro,
+  aboutTimeline,
+  aboutValors,
+  aboutBici,
+  aboutFinalCta,
+} from "../data/about";
+---
+
+<BaseLayout
+  title="Sobre mi — Laia | SEO amb Talons"
+  description="Soc la Laia, consultora SEO des del 2016. T'explico per què em dedico al SEO, per què treballo especialment amb dones emprenedores i com és la meva manera de fer les coses."
+  canonical="https://seoambtalons.cat/sobre-mi"
+>
+  <HeroSection {...aboutHero} />
+  <StatsSection stats={aboutStats} />
+  <div class="h-px bg-white/10 max-w-3xl mx-auto"></div>
+  <IntroSection {...aboutIntro} />
+  <TimelineSection items={aboutTimeline} />
+  <div class="h-px bg-white/10 max-w-3xl mx-auto"></div>
+  <ValorsSection valors={aboutValors} />
+  <BiciSection {...aboutBici} />
+  <CtaSection {...aboutFinalCta} />
+
+  <!-- ══════════════════════════ SCHEMA.ORG ══════════════════════════ -->
+  <PersonSchema />
+</BaseLayout>
