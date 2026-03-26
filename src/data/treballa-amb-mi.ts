@@ -217,7 +217,8 @@ export const treballaPricing = {
     ],
     cta: {
       text: "Reserva la teva sessió gratuïta →",
-      href: "https://calendly.com/",
+      // href: "https://calendly.com/",
+      href: "/contacte",
     },
     noteCta: "Places limitades · Es confirma per correu",
   },

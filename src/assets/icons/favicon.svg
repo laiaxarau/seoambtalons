@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+
+  <!-- Línia decorativa coral -->
+  <rect x="4" y="27" width="24" height="1" rx="0.5" fill="#e8472a"/>
+
+  <!-- Inicials -->
+    <text
+    x="8"
+    y="23"
+    font-family="Georgia, serif"
+    font-size="21"
+    font-weight="700"
+    font-style="italic"
+    fill="#f5f0eb"
+    text-anchor="middle"
+  >S</text>
+  <text
+    x="23"
+    y="23"
+    font-family="Georgia, serif"
+    font-size="21"
+    font-weight="700"
+    font-style="italic"
+    fill="#f5f0eb"
+    text-anchor="middle"
+    letter-spacing="1"
+  >T</text>
+  <text
+    x="16"
+    y="23"
+    font-family="Georgia, serif"
+    font-size="12"
+    font-weight="700"
+    font-style="italic"
+    fill="#e8472a"
+    text-anchor="middle"
+  >a</text>
+</svg>
