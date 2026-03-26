@@ -14,7 +14,7 @@ export const navigationConfig = {
     // { label: "Per a qui", href: "/per-a-qui", icon: "users" },
     { label: "Qui sóc", href: "/qui-soc" },
     { label: "Treballa amb mi", href: "/treballa-amb-mi" },
-    { label: "Contacte", href: "/contacte" },
+    // { label: "Contacte", href: "/contacte" },
     // { label: "Blog", href: "/blog", icon: "blog" },
   ] as NavItem[],
 
