@@ -1,17 +1,11 @@
 import type { APIRoute } from "astro";
-import { Resend } from "resend";
-import { siteConfig } from "src/config/site";
-
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-
     const { name, email, subject, message } = data;
 
-    // Validació bàsica
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ error: "Falten camps obligatoris" }),
@@ -19,21 +13,16 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    console.log("RESEND_API_KEY:", import.meta.env.RESEND_API_KEY);
+    const res = await fetch(
+      "https://hook.eu1.make.com/kcnbvvip1aj7lygwrvi558y7i2aqyk23",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message }),
+      },
+    );
 
-    await resend.emails.send({
-      from: "Contacte Web <onboarding@resend.dev>", // després pots posar el teu domini
-      to: [siteConfig.author.email], // on vols rebre els correus
-      subject: subject || "Nou missatge de contacte",
-      //   reply_to: siteConfig.author.email, // perquè puguis respondre directament al remitent
-      html: `
-        <h2>Nou missatge de contacte</h2>
-        <p><strong>Nom:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Missatge:</strong></p>
-        <p>${message}</p>
-      `,
-    });
+    if (!res.ok) throw new Error("Error al webhook");
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
