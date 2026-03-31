@@ -13,7 +13,9 @@ import {
   aboutHero,
   aboutStats,
   aboutIntro,
+  aboutTimelineSection,
   aboutTimeline,
+  aboutValorsSection,
   aboutValors,
   aboutBici,
   aboutFinalCta,
@@ -29,9 +31,9 @@ import {
   <StatsSection stats={aboutStats} />
   <div class="h-px bg-white/10 max-w-3xl mx-auto"></div>
   <IntroSection {...aboutIntro} />
-  <TimelineSection items={aboutTimeline} />
+  <TimelineSection {...aboutTimelineSection} items={aboutTimeline} />
   <div class="h-px bg-white/10 max-w-3xl mx-auto"></div>
-  <ValorsSection valors={aboutValors} />
+  <ValorsSection {...aboutValorsSection} valors={aboutValors} />
   <BiciSection {...aboutBici} />
   <CtaSection {...aboutFinalCta} />
 

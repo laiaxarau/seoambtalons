@@ -1,5 +1,11 @@
 ---
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+}
 
+const { eyebrow, title, subtitle } = Astro.props;
 ---
 
 <section
@@ -21,7 +27,7 @@
       style="animation-delay: 0.1s;"
     >
       <span class="w-5 h-px bg-coral"></span>
-      Contacte
+      {eyebrow}
       <span class="w-5 h-px bg-coral"></span>
     </div>
 
@@ -29,15 +35,14 @@
       class="text-5xl lg:text-6xl font-display font-bold text-offwhite mb-6 leading-tight animate-fade-up max-w-3xl mx-auto"
       style="animation-delay: 0.22s;"
     >
-      Parlem del teu projecte
+      {title}
     </h1>
 
     <p
       class="text-base lg:text-lg text-sand max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up font-light"
       style="animation-delay: 0.34s;"
     >
-      Estic aquí per ajudar-te a posicionar el teu negoci a Google sense perdre
-      la teva essència. Envia'm un missatge i comencem a treballar juntes.
+      {subtitle}
     </p>
   </div>
 </section>

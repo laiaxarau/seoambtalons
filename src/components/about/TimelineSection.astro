@@ -6,10 +6,12 @@ interface TimelineItem {
 }
 
 interface Props {
+  eyebrow: string;
+  title: string;
   items: TimelineItem[];
 }
 
-const { items } = Astro.props;
+const { eyebrow, title, items } = Astro.props;
 ---
 
 <section class="timeline py-20 lg:py-32">
@@ -19,10 +21,10 @@ const { items } = Astro.props;
         class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6"
       >
         <span class="w-5 h-px bg-coral"></span>
-        Recorregut
+        {eyebrow}
       </div>
       <h2 class="text-4xl lg:text-5xl font-display font-bold text-offwhite">
-        D'on vinc i on soc
+        {title}
       </h2>
     </div>
 

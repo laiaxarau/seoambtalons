@@ -2,12 +2,13 @@
 interface Props {
   eyebrow: string;
   title: string;
+  titleAccent: string;
   subtitle: string;
   badges: string[];
   cta: { text: string; href: string; variant: string }[];
 }
 
-const { eyebrow, title, subtitle, badges, cta } = Astro.props;
+const { eyebrow, title, titleAccent, subtitle, badges, cta } = Astro.props;
 ---
 
 <section
@@ -36,7 +37,7 @@ const { eyebrow, title, subtitle, badges, cta } = Astro.props;
         class="text-5xl lg:text-6xl font-display font-bold text-offwhite mb-6 leading-tight"
       >
         {title}
-        <em class="text-coral-light italic">ben feta</em>
+        <em class="text-coral-light italic">{titleAccent}</em>
       </h1>
 
       <p

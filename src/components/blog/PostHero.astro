@@ -1,14 +1,17 @@
 ---
+import { blogPostUi } from "../../data/blog";
+
 const {
-  title = "Google Core Update Març 2026",
-  date = "12 Març 2026",
-  readingTime = "6 min lectura",
+  title = blogPostUi.defaultTitle,
+  date = blogPostUi.defaultDate,
+  readingTime = blogPostUi.defaultReadingTime,
+  eyebrow = blogPostUi.eyebrow,
 } = Astro.props;
 ---
 
 <section class="pt-32 pb-20 px-8 lg:px-16 max-w-5xl mx-auto">
   <p class="text-coral text-xs uppercase tracking-[0.18em] mb-6">
-    Novetats SEO
+    {eyebrow}
   </p>
 
   <h1

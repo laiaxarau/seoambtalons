@@ -1,6 +1,44 @@
 ---
-// Sense props per ara — les dades són estàtiques
-// Quan tinguem Sanity les podrem extreure d'aquí
+interface HeroCta {
+  text: string;
+  href: string;
+}
+
+interface HeroStat {
+  num: string;
+  label: string;
+}
+
+interface HeroMetric {
+  label: string;
+  value: string;
+  width: string;
+}
+
+interface Props {
+  eyebrow: string;
+  titleLines: string[];
+  titleAccent: string;
+  subtitle: string;
+  cta: HeroCta[];
+  stats: HeroStat[];
+  results: {
+    label: string;
+    metrics: HeroMetric[];
+  };
+  scrollLabel: string;
+}
+
+const {
+  eyebrow,
+  titleLines,
+  titleAccent,
+  subtitle,
+  cta,
+  stats,
+  results,
+  scrollLabel,
+} = Astro.props;
 ---
 
 <section
@@ -9,7 +47,7 @@
   <!-- ── ESQUERRA ── -->
   <div
     class="relative z-10 flex flex-col justify-center
-              px-8 lg:px-16 pt-32 pb-16 lg:py-0"
+              px-8 lg:px-24 pt-32 pb-16 lg:py-0"
   >
     <!-- Tag -->
     <h1
@@ -17,7 +55,7 @@
              uppercase tracking-[0.18em] font-medium mb-8 opacity-0"
     >
       <span class="block w-8 h-px bg-coral"></span>
-      SEO per a dones emprenedores
+      {eyebrow}
     </h1>
 
     <!-- H1 -->
@@ -25,10 +63,8 @@
       class="hero-item font-display text-5xl lg:text-6xl xl:text-7xl font-black
              leading-none text-offwhite opacity-0"
     >
-      Posiciona el<br />
-      teu negoci<br />
-      sense perdre<br />
-      <em class="italic text-coral">el teu estil</em>
+      {titleLines.map((line) => <span class="block">{line}</span>)}
+      <em class="block italic text-coral">{titleAccent}</em>
     </p>
 
     <!-- Subtítol -->
@@ -36,24 +72,27 @@
       class="hero-item mt-6 text-sand font-light text-lg leading-relaxed
              max-w-md opacity-0"
     >
-      T'ajudem a apareixer a Google quan les teves clientes et busquen. SEO
-      estratègic pensat per a negocis femenins que volen créixer de veritat.
+      {subtitle}
     </p>
 
     <!-- CTAs -->
-    <div class="hero-item flex flex-wrap items-center gap-5 mt-10 opacity-0">
-      <a href="/contacte" class="btn-primary"> Vull una auditoria </a>
+    <div
+      class="hero-item text-coral flex flex-wrap items-center gap-5 mt-10 opacity-0"
+    >
+      {
+        cta.map((item) => (
+          <a href={item.href} class="btn-primary">
+            {item.text}
+          </a>
+        ))
+      }
       <!-- <a href="/serveis" class="btn-secondary"> Veure serveis → </a> -->
     </div>
 
     <!-- Stats -->
     <div class="hero-item flex gap-10 mt-14 opacity-0">
       {
-        [
-          { num: "+120", label: "Negocis posicionats" },
-          { num: "3×", label: "Tràfic de mitjana" },
-          { num: "8 anys", label: "D'experiència" },
-        ].map(({ num, label }) => (
+        stats.map(({ num, label }) => (
           <div>
             <div class="font-display text-3xl font-bold text-offwhite leading-none">
               {num}
@@ -83,16 +122,11 @@
                backdrop-blur-sm p-8 opacity-0"
       >
         <p class="text-coral text-xs uppercase tracking-[0.18em] mb-6">
-          📈 Resultats d'una clienta — 6 mesos
+          {results.label}
         </p>
 
         {
-          [
-            { label: "Visibilitat", value: "+312%", width: "88%" },
-            { label: "Posicions Top 3", value: "+24 kw", width: "72%" },
-            { label: "Tràfic orgànic", value: "+3.1k/m", width: "95%" },
-            { label: "Vendes online", value: "+78%", width: "65%" },
-          ].map(({ label, value, width }) => (
+          results.metrics.map(({ label, value, width }) => (
             <div class="flex items-center gap-4 py-3.5 border-b border-white/8 last:border-0">
               <span class="text-sand text-sm w-32 shrink-0">{label}</span>
               <div class="flex-1 h-px bg-white/8 relative overflow-hidden">
@@ -127,7 +161,7 @@
       <div class="absolute top-0 left-0 w-full bg-coral animate-scroll-line">
       </div>
     </div>
-    Scroll
+    {scrollLabel}
   </div>
 </section>
 

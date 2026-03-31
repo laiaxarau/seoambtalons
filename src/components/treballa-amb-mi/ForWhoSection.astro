@@ -2,11 +2,13 @@
 interface Props {
   eyebrow: string;
   title: string;
+  yesTitle: string;
+  noTitle: string;
   yes: string[];
   no: string[];
 }
 
-const { eyebrow, title, yes, no } = Astro.props;
+const { eyebrow, title, yesTitle, noTitle, yes, no } = Astro.props;
 ---
 
 <section class="forwho bg-stone-950 py-20 lg:py-32">
@@ -24,7 +26,7 @@ const { eyebrow, title, yes, no } = Astro.props;
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
       <div>
         <h3 class="text-lg font-medium text-offwhite mb-8">
-          ✓ Et reconeixeràs aquí
+          {yesTitle}
         </h3>
         <ul class="space-y-6">
           {
@@ -41,7 +43,7 @@ const { eyebrow, title, yes, no } = Astro.props;
       </div>
       <div>
         <h3 class="text-lg font-medium text-offwhite mb-8">
-          ✗ Potser no encaixem si...
+          {noTitle}
         </h3>
         <ul class="space-y-6">
           {

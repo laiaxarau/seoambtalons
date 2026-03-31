@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import FormattedDate from "../../components/common/FormattedDate.astro";
 import { sanity } from "../../lib/sanity";
 import blogPlaceholder from "../../assets/blog-placeholder-about.jpg";
+import { blogPage } from "../../data/blog";
 import { type Post } from "../../types/index";
 
 const posts: Post[] = await sanity.fetch(`
@@ -19,10 +20,7 @@ const posts: Post[] = await sanity.fetch(`
 // const posts = sortPostsByDate(await getCollection("blog"));
 ---
 
-<BaseLayout
-  title="Blog - SEO amb Talons"
-  description="Articles i tutorials sobre SEO, posicionament web i estratègies digitals per a dones emprenedores."
->
+<BaseLayout title={blogPage.metaTitle} description={blogPage.metaDescription}>
   <section class="px-8 lg:px-16 py-24 lg:py-32">
     <div class="max-w-7xl mx-auto">
       <!-- Capçalera -->
@@ -30,11 +28,10 @@ const posts: Post[] = await sanity.fetch(`
         <h1
           class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-4"
         >
-          Blog SEO amb Talons
+          {blogPage.title}
         </h1>
         <p class="text-sand text-lg max-w-2xl mx-auto">
-          Articles, tutorials i estratègies per posicionar el teu negoci a
-          Google sense perdre el teu estil.
+          {blogPage.subtitle}
         </p>
       </div>
 

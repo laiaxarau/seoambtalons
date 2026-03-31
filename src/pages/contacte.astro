@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactHero from "../components/contact/ContactHero.astro";
 import ContactForm from "../components/contact/ContactForm.astro";
+import { contactForm, contactHero } from "../data/contact";
 ---
 
 <BaseLayout
@@ -9,6 +10,6 @@ import ContactForm from "../components/contact/ContactForm.astro";
   description="Contacta amb mi per parlar del teu projecte SEO. Consultoria estratègica per a dones emprenedores que volen créixer a Google."
   canonical="https://seoambtalons.cat/contact"
 >
-  <ContactHero />
-  <ContactForm />
+  <ContactHero {...contactHero} />
+  <ContactForm {...contactForm} />
 </BaseLayout>
