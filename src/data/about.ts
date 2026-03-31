@@ -1,6 +1,7 @@
 export const aboutHero = {
   eyebrow: "Hola, soc la Laia",
-  title: "Consultora SEO que estima la feina ben feta",
+  title: "Consultora SEO que estima la feina",
+  titleAccent: "ben feta",
   subtitle:
     "Porto des del 2016 ajudant negocis a aparèixer a Google. Ara m'especialitzo en dones emprenedores que volen créixer sense dependre de ningú i sense fum.",
   cta: [
@@ -31,6 +32,11 @@ export const aboutIntro = {
   ],
 };
 
+export const aboutTimelineSection = {
+  eyebrow: "Recorregut",
+  title: "D'on vinc i on soc",
+};
+
 export const aboutTimeline = [
   {
     year: "2016",
@@ -58,6 +64,13 @@ export const aboutTimeline = [
   },
 ];
 
+export const aboutValorsSection = {
+  eyebrow: "La meva manera de fer",
+  title: "Tres paraules que em defineixen",
+  intro:
+    "Me les van demanar una vegada i vaig trigar exactament dos segons a respondre.",
+};
+
 export const aboutValors = [
   {
     num: "01",
@@ -82,6 +95,7 @@ export const aboutValors = [
 export const aboutBici = {
   eyebrow: "Fora de la pantalla",
   title: "La bici m'ha ensenyat a no rendir-me",
+  imageLabel: "Bici de muntanya",
   paragraphs: [
     "Vaig amb bici de muntanya. No és un hobby tranquil — hi ha pujades que fan mal, baixades que fan por, i camins que no surten com havies previst.",
     "Però cada vegada que arribo dalt, o que supero un tram que la setmana passada no podia, entenc una mica millor per què faig el que faig. El SEO és igual: no és ràpid, no sempre és còmode, i hi ha dies que sembla que no avances. Però si continues pedant, els resultats acaben arribant.",

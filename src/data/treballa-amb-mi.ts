@@ -1,14 +1,15 @@
 export const treballaHero = {
   eyebrow: "SEO amb Talons · Formats de treball",
   title: "Tria com vols treballar el SEO del teu negoci",
+  titleAccent: "ben feta",
   subtitle:
     "Cada negoci és diferent. Cada moment també. Aquí trobaràs el format que s'adapta a tu: des d'una sessió puntual fins a un acompanyament mensual complet.",
   badges: [
     "Sessió estratègica",
     "Pack SEO",
     "Servei mensual",
-    "Mentoria",
-    "Llançament de curs",
+    // "Mentoria",
+    // "Llançament de curs",
   ],
   cta: [
     {
@@ -18,6 +19,14 @@ export const treballaHero = {
     },
     { text: "Veure els formats", href: "#formats", variant: "ghost" },
   ],
+};
+
+export const treballaSchema = {
+  name: "Treballa amb mi — Formats SEO",
+  description:
+    "Formats de treball SEO per a dones emprenedores: sessió estratègica, pack SEO i servei mensual.",
+  catalogName: "Formats de treball SEO",
+  offerName: "Sessió de diagnosi gratuïta",
 };
 
 export const treballaPain = {
@@ -55,7 +64,7 @@ export const treballaPain = {
 export const treballaFormats = {
   header: {
     eyebrow: "Com podem treballar juntes",
-    title: "Cinc formats. Una sola direcció.",
+    title: "Tres formats. Una sola direcció.",
     subtitle:
       "Tots els formats estan pensats per a dones emprenedores que volen créixer a Google sense perdre el control del seu negoci.",
   },
@@ -174,6 +183,8 @@ export const treballaProcess = {
 export const treballaForWho = {
   eyebrow: "Per a qui és",
   title: "Treballem juntes si...",
+  yesTitle: "✓ Et reconeixeràs aquí",
+  noTitle: "✗ Potser no encaixem si...",
   yes: [
     "Tens un negoci en marxa (servei, formació, productes digitals, botiga) i vols més visibilitat orgànica.",
     "Vols una estratègia clara i adaptada a tu, no consells genèrics que no encaixen amb la teva realitat.",

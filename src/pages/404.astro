@@ -1,76 +1,77 @@
 ---
 // src/pages/404.astro
+import { notFoundPage } from "../data/not-found";
 ---
 
 <html lang="ca">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pròximament — SEO amb Talons</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{notFoundPage.pageTitle}</title>
+  </head>
+  <body>
+    <section class="page-404">
+      <!-- Decoració fons -->
+      <div class="bg-blob"></div>
+      <div class="bg-grid"></div>
 
-  <section class="page-404">
+      <!-- Contingut -->
+      <div class="content">
+        <!-- Tag superior -->
+        <span class="tag">
+          <span class="tag-line"></span>
+          {notFoundPage.eyebrow}
+        </span>
 
-    <!-- Decoració fons -->
-    <div class="bg-blob"></div>
-    <div class="bg-grid"></div>
+        <!-- Número gran decoratiu -->
+        <div class="big-number" aria-hidden="true">{notFoundPage.code}</div>
 
-    <!-- Contingut -->
-    <div class="content">
+        <!-- Títol -->
+        <h1 class="title">
+          {notFoundPage.titleLines[0]}<br />
+          {notFoundPage.titleLines[1]}
+          <em>{notFoundPage.titleAccent}</em>
+        </h1>
 
-      <!-- Tag superior -->
-      <span class="tag">
-        <span class="tag-line"></span>
-        En construcció
-      </span>
+        <!-- Subtítol -->
+        <p class="subtitle">
+          {notFoundPage.subtitle}
+        </p>
 
-      <!-- Número gran decoratiu -->
-      <div class="big-number" aria-hidden="true">404</div>
-
-      <!-- Títol -->
-      <h1 class="title">
-        Aquesta pàgina<br>
-        arriba <em>aviat</em>
-      </h1>
-
-      <!-- Subtítol -->
-      <p class="subtitle">
-        Estem treballant per portar-te contingut de qualitat.<br>
-        Mentrestant, torna a l'inici i descobreix el que ja tenim.
-      </p>
-
-      <!-- CTA -->
-      <a href="/" class="btn-primary">
-        ← Torna a l'inici
-      </a>
-
-    </div>
-
-    <!-- Scroll indicator (igual que al hero) -->
-    <div class="scroll-indicator">
-      <div class="scroll-line">
-        <div class="scroll-line-inner"></div>
+        <!-- CTA -->
+        <a href={notFoundPage.cta.href} class="btn-primary">
+          {notFoundPage.cta.label}
+        </a>
       </div>
-      aviat
-    </div>
 
-  </section>
-
-</body>
+      <!-- Scroll indicator (igual que al hero) -->
+      <div class="scroll-indicator">
+        <div class="scroll-line">
+          <div class="scroll-line-inner"></div>
+        </div>
+        {notFoundPage.scrollLabel}
+      </div>
+    </section>
+  </body>
 </html>
 
 <style>
   /* ── Variables (han de coincidir amb el teu globals.css) ── */
   :root {
-    --coral:      #E8614A;
-    --offwhite:   #F5F0E8;
-    --sand:       #B8A99A;
-    --dark:       #111010;
-    --dark-sand:  #1A1714;
+    --coral: #e8614a;
+    --offwhite: #f5f0e8;
+    --sand: #b8a99a;
+    --dark: #111010;
+    --dark-sand: #1a1714;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   body {
     background: var(--dark);
@@ -108,8 +109,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
   }
@@ -154,7 +155,7 @@
     transform: translateY(-60%);
     font-size: clamp(8rem, 20vw, 16rem);
     font-weight: 900;
-    color: rgba(255,255,255,0.03);
+    color: rgba(255, 255, 255, 0.03);
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -203,7 +204,9 @@
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
     animation: fadeUp 0.8s 0.7s ease forwards;
     opacity: 0;
   }
@@ -246,13 +249,28 @@
 
   /* ── Animacions ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes scrollLine {
-    0%   { height: 0; top: 0; }
-    50%  { height: 100%; top: 0; }
-    100% { height: 0; top: 100%; }
+    0% {
+      height: 0;
+      top: 0;
+    }
+    50% {
+      height: 100%;
+      top: 0;
+    }
+    100% {
+      height: 0;
+      top: 100%;
+    }
   }
 </style>

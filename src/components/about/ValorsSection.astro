@@ -6,10 +6,13 @@ interface Valor {
 }
 
 interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
   valors: Valor[];
 }
 
-const { valors } = Astro.props;
+const { eyebrow, title, intro, valors } = Astro.props;
 ---
 
 <section class="valors bg-stone-900 py-20 lg:py-32">
@@ -19,17 +22,16 @@ const { valors } = Astro.props;
         class="inline-flex items-center gap-2 text-coral text-xs uppercase tracking-widest font-medium mb-6 justify-center"
       >
         <span class="w-5 h-px bg-coral"></span>
-        La meva manera de fer
+        {eyebrow}
         <span class="w-5 h-px bg-coral"></span>
       </div>
       <h2
         class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-4"
       >
-        Tres paraules que em defineixen
+        {title}
       </h2>
       <p class="text-base text-sand max-w-md mx-auto">
-        Me les van demanar una vegada i vaig trigar exactament dos segons a
-        respondre.
+        {intro}
       </p>
     </div>
 
