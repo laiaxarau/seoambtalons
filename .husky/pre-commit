@@ -1,0 +1,2 @@
+echo "🔍 Revisant el codi abans de fer commit..."
+pnpm run typecheck && pnpm run check
