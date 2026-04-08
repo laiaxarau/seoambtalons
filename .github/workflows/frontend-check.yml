@@ -1,0 +1,35 @@
+name: Validació Astro (pnpm)
+on: [pull_request]
+
+jobs:
+  build_and_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar el codi
+        uses: actions/checkout@v4
+
+      - name: Instal·lar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          # Treiem el problema del 'packages field' forçant la instal·lació inicial
+          run_install: false
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          # Fem servir el cache manual per evitar l'error del setup-node
+          cache: "pnpm"
+
+      - name: Instal·lar dependències
+        run: pnpm install --no-frozen-lockfile
+
+      - name: TypeScript Check
+        run: pnpm run typecheck
+
+      - name: Astro Check (Linting)
+        run: pnpm run check
+
+      - name: Intent de Build
+        run: pnpm run build
