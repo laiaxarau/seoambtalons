@@ -5,31 +5,32 @@ jobs:
   build_and_check:
     runs-on: ubuntu-latest
     steps:
-      - name: Baixar el codi
+      - name: 1. Baixar el teu codi del repo
         uses: actions/checkout@v4
 
-      - name: Instal·lar pnpm
+      - name: 2. Instal·lar l'eina pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
-          # Treiem el problema del 'packages field' forçant la instal·lació inicial
-          run_install: false
 
-      - name: Configurar Node.js
+      - name: 3. Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          # Fem servir el cache manual per evitar l'error del setup-node
-          cache: "pnpm"
+          node-version: "22"
 
-      - name: Instal·lar dependències
+      - name: 4. Instal·lar les llibreries del teu projecte
         run: pnpm install --no-frozen-lockfile
+        env:
+          CI: true
 
-      - name: TypeScript Check
+      - name: 4.5 Generar tipats d'Astro
+        run: pnpm astro sync
+
+      - name: 5. Mirar si hi ha errors de TypeScript
         run: pnpm run typecheck
 
-      - name: Astro Check (Linting)
+      - name: 6. Mirar si Astro troba errors
         run: pnpm run check
 
-      - name: Intent de Build
+      - name: 7. Intentar generar la web final
         run: pnpm run build
