@@ -1,8 +1,5 @@
 ---
 import { services, company, legal } from "../../data/footer";
-import { navigationConfig } from "../../config/navigation";
-
-const { social } = navigationConfig;
 
 const year = new Date().getFullYear();
 ---
@@ -52,7 +49,7 @@ const year = new Date().getFullYear();
       </h3>
       <ul class="flex flex-col gap-3">
         {
-          services.map(({ label, href }) => (
+          services.map(({ label }) => (
             <li
               class="text-sand text-sm font-light hover:text-offwhite
                      transition-colors duration-200"

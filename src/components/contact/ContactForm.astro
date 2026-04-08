@@ -122,7 +122,7 @@ const {
   </div>
 </section>
 
-<script define:vars={{ successMessage, errorMessage }}>
+<script is:inline define:vars={{ successMessage, errorMessage }}>
   const form = document.querySelector("#contact-form");
 
   if (form instanceof HTMLFormElement) {

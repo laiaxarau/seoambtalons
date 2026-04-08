@@ -1,0 +1,36 @@
+name: Validació Astro (pnpm)
+on: [pull_request]
+
+jobs:
+  build_and_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Baixar el teu codi del repo
+        uses: actions/checkout@v4
+
+      - name: 2. Instal·lar l'eina pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: 3. Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 4. Instal·lar les llibreries del teu projecte
+        run: pnpm install --no-frozen-lockfile
+        env:
+          CI: true
+
+      - name: 4.5 Generar tipats d'Astro
+        run: pnpm astro sync
+
+      - name: 5. Mirar si hi ha errors de TypeScript
+        run: pnpm run typecheck
+
+      - name: 6. Mirar si Astro troba errors
+        run: pnpm run check
+
+      - name: 7. Intentar generar la web final
+        run: pnpm run build

@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
   },
   "pnpm": {
     "overrides": {
@@ -33,6 +36,7 @@
     "typescript": "^6.0.2"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^2.1.4"
+    "@astrojs/partytown": "^2.1.4",
+    "husky": "^9.1.7"
   }
 }

@@ -9,222 +9,231 @@
   role="dialog"
   aria-label="Avís de cookies"
 >
-  <div class="bg-dark-sand border-t border-white/8 px-8 lg:px-16 py-6
+  <div
+    class="bg-dark-sand border-t border-white/8 px-8 lg:px-16 py-6
               flex flex-col lg:flex-row items-start lg:items-center
-              justify-between gap-6">
-
+              justify-between gap-6"
+  >
     <!-- Text -->
     <div class="flex-1 max-w-2xl">
-      <p class="text-xs uppercase tracking-[0.18em] text-coral mb-1">
-        Cookies
-      </p>
+      <p class="text-xs uppercase tracking-[0.18em] text-coral mb-1">Cookies</p>
       <p class="text-sand text-sm font-light leading-relaxed">
         Fem servir cookies pròpies i de tercers per analitzar el tràfic i
-        millorar la teva experiència. Pots acceptar-les totes o gestionar
-        les teves preferències.
-        
-          href="/politica-de-cookies"
-          class="text-offwhite underline underline-offset-2 hover:text-coral
-                 transition-colors duration-200 ml-1"
-        >
-          Més informació
-        </a>
+        millorar la teva experiència. Pots acceptar-les totes o gestionar les
+        teves preferències. href="/politica-de-cookies" class="text-offwhite
+        underline underline-offset-2 hover:text-coral transition-colors
+        duration-200 ml-1" > Més informació
       </p>
-    </div>
-
-    <!-- Accions -->
-    <div class="flex items-center gap-3 shrink-0">
-      <button
-        id="cookie-settings"
-        class="text-sand text-xs uppercase tracking-widest border-b border-sand/40
-               pb-0.5 hover:text-offwhite hover:border-offwhite transition-colors
-               duration-200"
-      >
-        Configurar
-      </button>
-      <button
-        id="cookie-reject"
-        class="text-sand text-xs uppercase tracking-widest px-5 py-2.5
-               border border-white/10 hover:border-white/30 hover:text-offwhite
-               transition-colors duration-200"
-      >
-        Rebutjar
-      </button>
-      <button
-        id="cookie-accept"
-        class="bg-coral text-offwhite text-xs uppercase tracking-widest
-               px-5 py-2.5 hover:bg-coral-light transition-colors duration-200"
-      >
-        Acceptar totes
-      </button>
     </div>
   </div>
 
-  <!-- Panel de configuració (ocult per defecte) -->
-  <div
-    id="cookie-settings-panel"
-    class="hidden bg-black border-t border-white/5 px-8 lg:px-16 py-8"
-  >
-    <p class="text-xs uppercase tracking-[0.18em] text-coral mb-6">
-      Gestiona les teves preferències
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-
-      <!-- Necessàries -->
-      <div class="flex items-start justify-between gap-4 p-4 border border-white/8">
-        <div>
-          <p class="text-offwhite text-sm font-medium mb-1">Necessàries</p>
-          <p class="text-sand text-xs font-light leading-relaxed">
-            Imprescindibles per al funcionament del lloc web. No es poden desactivar.
-          </p>
-        </div>
-        <div class="shrink-0 mt-0.5">
-          <div class="w-10 h-5 bg-coral rounded-full relative opacity-50 cursor-not-allowed">
-            <div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Analítiques -->
-      <div class="flex items-start justify-between gap-4 p-4 border border-white/8">
-        <div>
-          <p class="text-offwhite text-sm font-medium mb-1">Analítiques</p>
-          <p class="text-sand text-xs font-light leading-relaxed">
-            Ens ajuden a entendre com uses el web. Fem servir Google Analytics.
-          </p>
-        </div>
-        <button
-          id="toggle-analytics"
-          role="switch"
-          aria-checked="false"
-          class="shrink-0 mt-0.5 w-10 h-5 bg-white/10 rounded-full relative
-                 transition-colors duration-200 cursor-pointer"
-        >
-          <div class="toggle-thumb absolute left-0.5 top-0.5 w-4 h-4 bg-white
-                      rounded-full transition-transform duration-200"></div>
-        </button>
-      </div>
-
-      <!-- Màrqueting -->
-      <div class="flex items-start justify-between gap-4 p-4 border border-white/8">
-        <div>
-          <p class="text-offwhite text-sm font-medium mb-1">Màrqueting</p>
-          <p class="text-sand text-xs font-light leading-relaxed">
-            Permeten mostrar contingut i anuncis rellevants per a tu.
-          </p>
-        </div>
-        <button
-          id="toggle-marketing"
-          role="switch"
-          aria-checked="false"
-          class="shrink-0 mt-0.5 w-10 h-5 bg-white/10 rounded-full relative
-                 transition-colors duration-200 cursor-pointer"
-        >
-          <div class="toggle-thumb absolute left-0.5 top-0.5 w-4 h-4 bg-white
-                      rounded-full transition-transform duration-200"></div>
-        </button>
-      </div>
-
-    </div>
-
+  <!-- Accions -->
+  <div class="flex items-center gap-3 shrink-0">
     <button
-      id="cookie-save"
-      class="bg-coral text-offwhite text-xs uppercase tracking-widest
-             px-6 py-3 hover:bg-coral-light transition-colors duration-200"
+      id="cookie-settings"
+      class="text-sand text-xs uppercase tracking-widest border-b border-sand/40
+               pb-0.5 hover:text-offwhite hover:border-offwhite transition-colors
+               duration-200"
     >
-      Desar preferències
+      Configurar
+    </button>
+    <button
+      id="cookie-reject"
+      class="text-sand text-xs uppercase tracking-widest px-5 py-2.5
+               border border-white/10 hover:border-white/30 hover:text-offwhite
+               transition-colors duration-200"
+    >
+      Rebutjar
+    </button>
+    <button
+      id="cookie-accept"
+      class="bg-coral text-offwhite text-xs uppercase tracking-widest
+               px-5 py-2.5 hover:bg-coral-light transition-colors duration-200"
+    >
+      Acceptar totes
     </button>
   </div>
 </div>
 
-<script>
-  const COOKIE_KEY = 'sat_cookies' // sat = seoambtalons
+<!-- Panel de configuració (ocult per defecte) -->
+<div
+  id="cookie-settings-panel"
+  class="hidden bg-black border-t border-white/5 px-8 lg:px-16 py-8"
+>
+  <p class="text-xs uppercase tracking-[0.18em] text-coral mb-6">
+    Gestiona les teves preferències
+  </p>
 
-  const banner        = document.getElementById('cookie-banner')
-  const settingsPanel = document.getElementById('cookie-settings-panel')
-  const btnAccept     = document.getElementById('cookie-accept')
-  const btnReject     = document.getElementById('cookie-reject')
-  const btnSettings   = document.getElementById('cookie-settings')
-  const btnSave       = document.getElementById('cookie-save')
-  const toggleAnalytics = document.getElementById('toggle-analytics')
-  const toggleMarketing = document.getElementById('toggle-marketing')
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <!-- Necessàries -->
+    <div
+      class="flex items-start justify-between gap-4 p-4 border border-white/8"
+    >
+      <div>
+        <p class="text-offwhite text-sm font-medium mb-1">Necessàries</p>
+        <p class="text-sand text-xs font-light leading-relaxed">
+          Imprescindibles per al funcionament del lloc web. No es poden
+          desactivar.
+        </p>
+      </div>
+      <div class="shrink-0 mt-0.5">
+        <div
+          class="w-10 h-5 bg-coral rounded-full relative opacity-50 cursor-not-allowed"
+        >
+          <div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analítiques -->
+    <div
+      class="flex items-start justify-between gap-4 p-4 border border-white/8"
+    >
+      <div>
+        <p class="text-offwhite text-sm font-medium mb-1">Analítiques</p>
+        <p class="text-sand text-xs font-light leading-relaxed">
+          Ens ajuden a entendre com uses el web. Fem servir Google Analytics.
+        </p>
+      </div>
+      <button
+        id="toggle-analytics"
+        role="switch"
+        aria-checked="false"
+        class="shrink-0 mt-0.5 w-10 h-5 bg-white/10 rounded-full relative
+                 transition-colors duration-200 cursor-pointer"
+      >
+        <div
+          class="toggle-thumb absolute left-0.5 top-0.5 w-4 h-4 bg-white
+                      rounded-full transition-transform duration-200"
+        >
+        </div>
+      </button>
+    </div>
+
+    <!-- Màrqueting -->
+    <div
+      class="flex items-start justify-between gap-4 p-4 border border-white/8"
+    >
+      <div>
+        <p class="text-offwhite text-sm font-medium mb-1">Màrqueting</p>
+        <p class="text-sand text-xs font-light leading-relaxed">
+          Permeten mostrar contingut i anuncis rellevants per a tu.
+        </p>
+      </div>
+      <button
+        id="toggle-marketing"
+        role="switch"
+        aria-checked="false"
+        class="shrink-0 mt-0.5 w-10 h-5 bg-white/10 rounded-full relative
+                 transition-colors duration-200 cursor-pointer"
+      >
+        <div
+          class="toggle-thumb absolute left-0.5 top-0.5 w-4 h-4 bg-white
+                      rounded-full transition-transform duration-200"
+        >
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <button
+    id="cookie-save"
+    class="bg-coral text-offwhite text-xs uppercase tracking-widest
+             px-6 py-3 hover:bg-coral-light transition-colors duration-200"
+  >
+    Desar preferències
+  </button>
+</div>
+
+<script>
+  const COOKIE_KEY = "sat_cookies"; // sat = seoambtalons
+
+  const banner = document.getElementById("cookie-banner");
+  const settingsPanel = document.getElementById("cookie-settings-panel");
+  const btnAccept = document.getElementById("cookie-accept");
+  const btnReject = document.getElementById("cookie-reject");
+  const btnSettings = document.getElementById("cookie-settings");
+  const toggleAnalytics = document.getElementById("toggle-analytics");
+  const toggleMarketing = document.getElementById("toggle-marketing");
 
   // Helpers
   function setCookie(value: string) {
-    const expires = new Date()
-    expires.setFullYear(expires.getFullYear() + 1)
-    document.cookie = `${COOKIE_KEY}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 1);
+    document.cookie = `${COOKIE_KEY}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
   }
 
   function getCookie(): string | null {
-    return document.cookie
-      .split('; ')
-      .find(row => row.startsWith(`${COOKIE_KEY}=`))
-      ?.split('=')[1] ?? null
+    return (
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${COOKIE_KEY}=`))
+        ?.split("=")[1] ?? null
+    );
   }
 
   function hideBanner() {
-    banner?.classList.add('translate-y-full')
-    banner?.classList.remove('translate-y-0')
+    banner?.classList.add("translate-y-full");
+    banner?.classList.remove("translate-y-0");
   }
 
   function showBanner() {
-    banner?.classList.remove('translate-y-full')
-    banner?.classList.add('translate-y-0')
+    banner?.classList.remove("translate-y-full");
+    banner?.classList.add("translate-y-0");
   }
 
   function setToggle(btn: HTMLElement | null, active: boolean) {
-    if (!btn) return
-    btn.setAttribute('aria-checked', String(active))
-    const thumb = btn.querySelector('.toggle-thumb') as HTMLElement
+    if (!btn) return;
+    btn.setAttribute("aria-checked", String(active));
+    const thumb = btn.querySelector(".toggle-thumb") as HTMLElement;
     if (active) {
-      btn.classList.add('bg-coral')
-      btn.classList.remove('bg-white/10')
-      thumb.style.transform = 'translateX(20px)'
+      btn.classList.add("bg-coral");
+      btn.classList.remove("bg-white/10");
+      thumb.style.transform = "translateX(20px)";
     } else {
-      btn.classList.remove('bg-coral')
-      btn.classList.add('bg-white/10')
-      thumb.style.transform = 'translateX(0)'
+      btn.classList.remove("bg-coral");
+      btn.classList.add("bg-white/10");
+      thumb.style.transform = "translateX(0)";
     }
   }
 
   // Init — mostra el banner si no hi ha cookie
   if (!getCookie()) {
-    setTimeout(showBanner, 800)
+    setTimeout(showBanner, 800);
   }
 
   // Acceptar totes
-  btnAccept?.addEventListener('click', () => {
-    setCookie('all')
-    hideBanner()
-  })
+  btnAccept?.addEventListener("click", () => {
+    setCookie("all");
+    hideBanner();
+  });
 
   // Rebutjar totes (només necessàries)
-  btnReject?.addEventListener('click', () => {
-    setCookie('necessary')
-    hideBanner()
-  })
+  btnReject?.addEventListener("click", () => {
+    setCookie("necessary");
+    hideBanner();
+  });
 
   // Obrir panel de configuració
-  btnSettings?.addEventListener('click', () => {
-    settingsPanel?.classList.toggle('hidden')
-  })
-
+  btnSettings?.addEventListener("click", () => {
+    settingsPanel?.classList.toggle("hidden");
+  });
 
   // Reobert des de qualsevol lloc
-window.addEventListener('open-cookies', () => {
-  // Reseteja els toggles segons la cookie guardada
-  const saved = getCookie()
-  if (saved && saved !== 'all' && saved !== 'necessary') {
-    try {
-      const prefs = JSON.parse(saved)
-      setToggle(toggleAnalytics, prefs.analytics ?? false)
-      setToggle(toggleMarketing, prefs.marketing ?? false)
-    } catch {}
-  }
+  window.addEventListener("open-cookies", () => {
+    // Reseteja els toggles segons la cookie guardada
+    const saved = getCookie();
+    if (saved && saved !== "all" && saved !== "necessary") {
+      try {
+        const prefs = JSON.parse(saved);
+        setToggle(toggleAnalytics, prefs.analytics ?? false);
+        setToggle(toggleMarketing, prefs.marketing ?? false);
+      } catch {}
+    }
 
-  // Obre directament el panel de configuració
-  settingsPanel?.classList.remove('hidden')
-  showBanner()
-})
+    // Obre directament el panel de configuració
+    settingsPanel?.classList.remove("hidden");
+    showBanner();
+  });
+</script>
