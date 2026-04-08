@@ -1,5 +1,33 @@
 ---
+interface Props {
+  title: string;
+  subtitle: string;
+  labels: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  };
+  placeholders: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  };
+  submitText: string;
+  successMessage: string;
+  errorMessage: string;
+}
 
+const {
+  title,
+  subtitle,
+  labels,
+  placeholders,
+  submitText,
+  successMessage,
+  errorMessage,
+} = Astro.props;
 ---
 
 <section class="contact-form py-24 lg:py-32 bg-stone-950">
@@ -8,10 +36,10 @@
       <h2
         class="text-4xl lg:text-5xl font-display font-bold text-offwhite mb-6 leading-tight"
       >
-        Contacta amb mi
+        {title}
       </h2>
       <p class="text-base lg:text-lg text-sand leading-relaxed font-light">
-        Tens alguna pregunta? Escriu-me i et respondré el més aviat possible.
+        {subtitle}
       </p>
     </div>
 
@@ -19,7 +47,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label for="name" class="block text-sm font-medium text-sand mb-2"
-            >Nom *</label
+            >{labels.name}</label
           >
           <input
             type="text"
@@ -27,12 +55,12 @@
             name="name"
             required
             class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50"
-            placeholder="El teu nom"
+            placeholder={placeholders.name}
           />
         </div>
         <div>
           <label for="email" class="block text-sm font-medium text-sand mb-2"
-            >Correu electrònic *</label
+            >{labels.email}</label
           >
           <input
             type="email"
@@ -40,27 +68,27 @@
             name="email"
             required
             class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50"
-            placeholder="elteu@email.com"
+            placeholder={placeholders.email}
           />
         </div>
       </div>
 
       <div>
         <label for="subject" class="block text-sm font-medium text-sand mb-2"
-          >Assumpte</label
+          >{labels.subject}</label
         >
         <input
           type="text"
           id="subject"
           name="subject"
           class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50"
-          placeholder="Assumpte del missatge"
+          placeholder={placeholders.subject}
         />
       </div>
 
       <div>
         <label for="message" class="block text-sm font-medium text-sand mb-2"
-          >Missatge *</label
+          >{labels.message}</label
         >
         <textarea
           id="message"
@@ -68,7 +96,7 @@
           rows="6"
           required
           class="w-full px-4 py-3 border border-sand/20 rounded-lg focus:ring-2 focus:ring-coral focus:border-transparent transition-colors bg-stone-900 text-offwhite placeholder-sand/50 resize-vertical"
-          placeholder="Escriu el teu missatge aquí..."></textarea>
+          placeholder={placeholders.message}></textarea>
       </div>
 
       <!-- Missatge d'èxit/error -->
@@ -82,7 +110,7 @@
           id="submit-btn"
           class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-coral text-white rounded-lg text-base font-medium hover:bg-coral-light transition-colors hover:-translate-y-0.5 transform"
         >
-          <span id="btn-text">Enviar missatge</span>
+          <span id="btn-text">{submitText}</span>
           <div
             id="btn-spinner"
             class="hidden w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
@@ -94,54 +122,56 @@
   </div>
 </section>
 
-<script>
-  const form = document.querySelector<HTMLFormElement>("#contact-form");
+<script is:inline define:vars={{ successMessage, errorMessage }}>
+  const form = document.querySelector("#contact-form");
 
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const submitBtn = form.querySelector<HTMLButtonElement>("#submit-btn")!;
-    const btnText = form.querySelector<HTMLSpanElement>("#btn-text")!;
-    const btnSpinner = form.querySelector<HTMLDivElement>("#btn-spinner")!;
-    const formMessage = form.querySelector<HTMLDivElement>("#form-message")!;
-    const messageP = formMessage.querySelector<HTMLParagraphElement>("p")!;
+      const submitBtn = form.querySelector("#submit-btn");
+      const btnText = form.querySelector("#btn-text");
+      const btnSpinner = form.querySelector("#btn-spinner");
+      const formMessage = form.querySelector("#form-message");
+      const messageP = formMessage?.querySelector("p");
 
-    if (!submitBtn || !btnText || !btnSpinner || !formMessage || !messageP)
-      return;
+      if (!submitBtn || !btnText || !btnSpinner || !formMessage || !messageP)
+        return;
 
-    submitBtn.disabled = true;
-    btnText.classList.add("hidden");
-    btnSpinner.classList.remove("hidden");
+      submitBtn.disabled = true;
+      btnText.classList.add("hidden");
+      btnSpinner.classList.remove("hidden");
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        subject: formData.get("subject"),
+        message: formData.get("message"),
+      };
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-      });
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        });
 
-      if (!res.ok) throw new Error();
+        if (!res.ok) throw new Error();
 
-      messageP.textContent = "Missatge enviat correctament!";
-      messageP.className = "text-sm text-green-400";
-      form.reset();
-    } catch {
-      messageP.textContent = "Error enviant el missatge";
-      messageP.className = "text-sm text-red-400";
-    }
+        messageP.textContent = successMessage;
+        messageP.className = "text-sm text-green-400";
+        form.reset();
+      } catch {
+        messageP.textContent = errorMessage;
+        messageP.className = "text-sm text-red-400";
+      }
 
-    formMessage.classList.remove("hidden");
-    submitBtn.disabled = false;
-    btnText.classList.remove("hidden");
-    btnSpinner.classList.add("hidden");
-  });
+      formMessage.classList.remove("hidden");
+      submitBtn.disabled = false;
+      btnText.classList.remove("hidden");
+      btnSpinner.classList.add("hidden");
+    });
+  }
 </script>

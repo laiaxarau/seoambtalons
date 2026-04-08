@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
   },
   "pnpm": {
     "overrides": {
@@ -14,6 +17,7 @@
     }
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.8",
     "@astrojs/mdx": "^5.0.2",
     "@astrojs/react": "^5.0.0",
     "@astrojs/rss": "^4.0.15",
@@ -28,9 +32,11 @@
     "react-dom": "^19.2.4",
     "resend": "^6.9.4",
     "sharp": "^0.34.3",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.1",
+    "typescript": "^6.0.2"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^2.1.4"
+    "@astrojs/partytown": "^2.1.4",
+    "husky": "^9.1.7"
   }
 }

@@ -1,5 +1,5 @@
 ---
-const { children } = Astro.props;
+import { blogPostUi } from "../../data/blog";
 ---
 
 <section class="px-8 lg:px-16 pb-32">
@@ -15,15 +15,18 @@ const { children } = Astro.props;
         <!-- CTA -->
         <div class="bg-white/5 border border-white/10 p-6">
           <h3 class="text-offwhite font-semibold mb-3">
-            Vols millorar el teu SEO?
+            {blogPostUi.sidebarCta.title}
           </h3>
 
           <p class="text-sand text-sm mb-4">
-            Descobreix quines oportunitats té el teu negoci.
+            {blogPostUi.sidebarCta.description}
           </p>
 
-          <a href="/contacte" class="btn-primary w-full text-center">
-            Demanar auditoria
+          <a
+            href={blogPostUi.sidebarCta.href}
+            class="btn-primary w-full text-center"
+          >
+            {blogPostUi.sidebarCta.buttonText}
           </a>
         </div>
       </div>

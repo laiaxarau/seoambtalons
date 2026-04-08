@@ -1,0 +1,27 @@
+{
+  // Activa el format automàtic en guardar (Prettier/Astro)
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Millora la detecció d'errors de TypeScript
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Revisions en temps real d'accessibilitat i SEO (Astro)
+  "astro.content-intellisense": true,
+
+  // Accions automàtiques en guardar
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+
+  // Perquè els fitxers .astro es vegin i s'entenguin bé
+  "files.associations": {
+    "*.astro": "astro"
+  },
+
+  // IMPORTANT: Mostra els errors de validació d'HTML i CSS (clau per al SEO)
+  "html.validate.scripts": true,
+  "html.validate.styles": true
+}

@@ -5,10 +5,11 @@ import biciImage from "../../assets/images/bici.png"; // Importa la imatge
 interface Props {
   eyebrow: string;
   title: string;
+  imageLabel: string;
   paragraphs: string[];
 }
 
-const { eyebrow, title, paragraphs } = Astro.props;
+const { eyebrow, title, imageLabel, paragraphs } = Astro.props;
 ---
 
 <section class="bici bg-stone-950 py-20 lg:py-32">
@@ -22,14 +23,14 @@ const { eyebrow, title, paragraphs } = Astro.props;
           width={400}
           height={200}
           src={biciImage}
-          alt="Bici de muntanya"
+          alt={imageLabel}
           class="w-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div
           class="absolute top-4 right-4 inline-flex items-center gap-2 bg-black/80 border border-white/20 rounded-full px-3 py-2 text-xs text-offwhite z-10"
         >
           <span class="w-1.5 h-1.5 rounded-full bg-coral animate-pulse"></span>
-          Bici de muntanya
+          {imageLabel}
         </div>
       </div>
 

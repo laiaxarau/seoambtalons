@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import FormattedDate from "../../components/common/FormattedDate.astro";
 import { sanity } from "../../lib/sanity";
 import blogPlaceholder from "../../assets/blog-placeholder-about.jpg";
+import { blogPostUi } from "../../data/blog";
 import { type Post } from "../../types/index";
 
 // ── Rutes dinàmiques ──
@@ -36,7 +37,7 @@ const post: Post = await sanity.fetch(
 
 <BaseLayout
   title={post.title}
-  description={`Llegeix l'article complet: ${post.title}`}
+  description={`${blogPostUi.articleDescriptionPrefix}${post.title}`}
 >
   <article class="max-w-4xl mx-auto px-8 lg:px-16 py-24 lg:py-32">
     <!-- Hero Image -->
@@ -96,7 +97,7 @@ const post: Post = await sanity.fetch(
         href="/blog"
         class="inline-block bg-coral text-white px-6 py-3 rounded-lg font-semibold transition hover:bg-red-600"
       >
-        ← Tornar al Blog
+        {blogPostUi.backToBlogLabel}
       </a>
     </div>
   </article>

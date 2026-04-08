@@ -5,11 +5,12 @@ import laiaImage from "../../assets/images/laia.png"; // Importa la imatge
 interface Props {
   eyebrow: string;
   title: string;
+  titleAccent: string;
   subtitle: string;
   cta: { text: string; href: string; variant: string }[];
 }
 
-const { eyebrow, title, subtitle, cta } = Astro.props;
+const { eyebrow, title, titleAccent, subtitle, cta } = Astro.props;
 ---
 
 <section
@@ -43,7 +44,7 @@ const { eyebrow, title, subtitle, cta } = Astro.props;
           style="animation-delay: 0.22s;"
         >
           {title}
-          <em class="text-coral-light italic">ben feta</em>
+          <em class="text-coral-light italic">{titleAccent}</em>
         </h1>
 
         <p

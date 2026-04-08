@@ -1,5 +1,14 @@
 ---
 import { servicesData } from '../../data/services';
+
+interface Props {
+  eyebrow: string;
+  titlePrefix: string;
+  titleAccent: string;
+  titleSuffix: string;
+}
+
+const { eyebrow, titlePrefix, titleAccent, titleSuffix } = Astro.props;
 ---
 
 <section class="px-8 lg:px-16 py-24 lg:py-32">
@@ -8,10 +17,10 @@ import { servicesData } from '../../data/services';
   <div class="flex flex-col lg:flex-row lg:items-end justify-between
               gap-6 mb-16">
     <div>
-      <p class="section-tag mb-3">El que fem</p>
+      <p class="section-tag mb-3">{eyebrow}</p>
       <h2 class="section-title text-offwhite">
-        Serveis que fan<br>
-        <em class="italic text-coral">créixer</em> el teu negoci
+        <span class="block">{titlePrefix}</span>
+        <span class="block"><em class="italic text-coral">{titleAccent}</em> {titleSuffix}</span>
       </h2>
     </div>
     <!-- <a href="/serveis" class="btn-secondary shrink-0">
@@ -22,7 +31,7 @@ import { servicesData } from '../../data/services';
   <!-- Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
               border border-white/8 divide-x divide-y divide-white/8">
-    {servicesData.map(({ num, icon, title, desc, href }) => (
+    {servicesData.map(({ num, icon, title, desc }) => (
       // <a
       //   href={href}
       //   class="group relative flex flex-col gap-4 p-8 lg:p-10

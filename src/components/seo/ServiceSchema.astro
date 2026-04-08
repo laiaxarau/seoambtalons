@@ -1,73 +1,38 @@
 ---
 import { siteConfig } from "../../config/site";
+import { treballaFormats, treballaSchema } from "../../data/treballa-amb-mi";
 
 const data = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Treballa amb mi — Formats SEO",
+  name: treballaSchema.name,
   provider: {
     "@type": "Person",
     name: siteConfig.author.name,
     url: siteConfig.url,
   },
-  description:
-    "Formats de treball SEO per a dones emprenedores: sessió estratègica, pack SEO, servei mensual, mentoria i SEO per a llançament de curs.",
+  description: treballaSchema.description,
   url: `${siteConfig.url}/treballa-amb-mi`,
   areaServed: { "@type": "Country", name: "Espanya" },
   inLanguage: "ca",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Formats de treball SEO",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Sessió estratègica SEO",
-          // url: `${siteConfig.url}/treballa-amb-mi/sessio-estrategica`,
-        },
+    name: treballaSchema.catalogName,
+    itemListElement: treballaFormats.formats.map((format) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: format.title,
       },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Pack SEO per a emprenedores",
-          // url: `${siteConfig.url}/treballa-amb-mi/pack-seo`,
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Servei SEO mensual",
-          // url: `${siteConfig.url}/treballa-amb-mi/seo-mensual`,
-        },
-      },
-      // {
-      //   "@type": "Offer",
-      //   itemOffered: {
-      //     "@type": "Service",
-      //     name: "Mentoria SEO per a emprenedores",
-      //     url: `${siteConfig.url}/treballa-amb-mi/mentoria-seo`,
-      //   },
-      // },
-      // {
-      //   "@type": "Offer",
-      //   itemOffered: {
-      //     "@type": "Service",
-      //     name: "SEO per a llançament de curs",
-      //     url: `${siteConfig.url}/treballa-amb-mi/seo-llancament`,
-      //   },
-      // },
-    ],
+    })),
   },
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "EUR",
-    name: "Sessió de diagnosi gratuïta",
+    name: treballaSchema.offerName,
   },
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(data)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />

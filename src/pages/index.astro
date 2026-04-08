@@ -3,13 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/home/Hero.astro";
 import Ticker from "../components/home/Ticker.astro";
 import Serveis from "../components/home/Serveis.astro";
+import { homeHero, homeServices } from "../data/home";
 ---
 
 <BaseLayout
   title="Posiciona el teu negoci sense perdre el teu estil"
   description="SEO estratègic per a dones emprenedores que volen créixer a Google."
 >
-  <Hero />
+  <Hero {...homeHero} />
   <Ticker />
-  <Serveis />
+  <Serveis {...homeServices} />
 </BaseLayout>

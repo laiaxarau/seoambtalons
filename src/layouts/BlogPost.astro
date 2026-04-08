@@ -3,6 +3,7 @@ import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/common/FormattedDate.astro";
+import { blogPostUi } from "../data/blog";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -33,7 +34,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         {
           updatedDate && (
             <span class="ml-4 italic">
-              Actualitzat: <FormattedDate date={updatedDate} />
+              {blogPostUi.updatedLabel} <FormattedDate date={updatedDate} />
             </span>
           )
         }
