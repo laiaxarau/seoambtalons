@@ -1,5 +1,3 @@
-import type { SvgComponent } from "astro/types";
-
 /**
  * Tipus per als elements de navegació
  */
