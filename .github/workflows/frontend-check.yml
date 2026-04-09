@@ -1,18 +1,16 @@
-name: Validació Astro (pnpm)
+name: Validació Completa (Codi + SEO)
 on:
   pull_request:
-    branches:
-      - devel
-      - main
+    branches: [devel, main]
 
 jobs:
-  build_and_check:
+  check_everything:
     runs-on: ubuntu-latest
     steps:
-      - name: 1. Baixar el teu codi del repo
+      - name: 1. Baixar el codi
         uses: actions/checkout@v4
 
-      - name: 2. Instal·lar l'eina pnpm
+      - name: 2. Instal·lar pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -22,19 +20,20 @@ jobs:
         with:
           node-version: "22"
 
-      - name: 4. Instal·lar les llibreries del teu projecte
+      - name: 4. Instal·lar dependències
         run: pnpm install --no-frozen-lockfile
-        env:
-          CI: true
 
-      - name: 4.5 Generar tipats d'Astro
-        run: pnpm astro sync
+      - name: 5. Validacions de codi (TS + Astro)
+        run: |
+          pnpm astro sync
+          pnpm run typecheck
+          pnpm run check
 
-      - name: 5. Mirar si hi ha errors de TypeScript
-        run: pnpm run typecheck
-
-      - name: 6. Mirar si Astro troba errors
-        run: pnpm run check
-
-      - name: 7. Intentar generar la web final
+      - name: 6. Generar Build per a Lighthouse
         run: pnpm run build
+
+      - name: 🚀 7. Audit de Lighthouse (SEO)
+        continue-on-error: true
+        run: |
+          pnpm exec lhci collect --static-dist-dir=./dist
+          pnpm exec lhci assert --assertions.categories:seo=error --assertions.categories:performance=error
