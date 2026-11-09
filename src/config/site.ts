@@ -7,9 +7,9 @@ import favicon from "../assets/icons/favicon.svg";
 export const siteConfig = {
   // Informació bàsica
   name: "SEO amb Talons",
-  title: "SEO amb talons",
+  title: "SEO amb Talons",
   description:
-    "SEO estratègic per a dones emprenedores que volen créixer a Google sense perdre el seu estil.",
+    "SEO estratègic per a dones emprenedores que volen créixer a Google sense perdre el teu estil.",
   url: "https://seoambtalons.cat",
   ogImage: "/images/og-default.jpg",
   favicon: favicon,

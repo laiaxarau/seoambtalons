@@ -1,0 +1,30 @@
+---
+import { siteConfig } from "../../config/site";
+
+const data = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  telephone: "+34615084681",
+  email: siteConfig.author.email,
+  areaServed: {
+    "@type": "Country",
+    name: "Espanya",
+  },
+  founder: {
+    "@type": "Person",
+    name: siteConfig.author.name,
+    url: `${siteConfig.url}/sobre-mi`,
+  },
+  foundingDate: "2025",
+  knowsAbout: siteConfig.author.knowsAbout,
+  sameAs: [
+    siteConfig.social.instagram,
+    siteConfig.social.linkedin,
+  ],
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
