@@ -12,7 +12,7 @@ export const navigationConfig = {
     { label: "Inici", href: "/" },
     // { label: "Serveis", href: "/serveis", icon: "services" },
     // { label: "Per a qui", href: "/per-a-qui", icon: "users" },
-    { label: "Qui sóc", href: "/qui-soc" },
+    { label: "Sobre mi", href: "/sobre-mi" },
     { label: "Treballa amb mi", href: "/treballa-amb-mi" },
     // { label: "Contacte", href: "/contacte" },
     // { label: "Blog", href: "/blog", icon: "blog" },

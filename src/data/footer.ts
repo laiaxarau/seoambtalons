@@ -8,7 +8,7 @@ export const services = [
 ];
 
 export const company = [
-  { label: "Qui sóc", href: "/qui-soc" },
+  { label: "Sobre mi", href: "/sobre-mi" },
   // { label: "Casos d'èxit", href: "/casos-exit" },
   // { label: "Blog", href: "/blog" },
   // { label: "Recursos", href: "/recursos" },
