@@ -1,5 +1,6 @@
 ---
 import ServiceSchema from "../components/seo/ServiceSchema.astro";
+import FAQSchema from "../components/seo/FAQSchema.astro";
 import CtaSection from "../components/treballa-amb-mi/CtaSection.astro";
 import FaqSection from "../components/treballa-amb-mi/FaqSection.astro";
 import FormatsSection from "../components/treballa-amb-mi/FormatsSection.astro";
@@ -43,5 +44,6 @@ import {
   <FaqSection header={treballaFaq.header} items={treballaFaq.items} />
   <CtaSection {...treballaFinalCta} />
 
-  <ServiceSchema />
+  <ServiceSchema slot="head" />
+  <FAQSchema slot="head" items={treballaFaq.items} />
 </BaseLayout>

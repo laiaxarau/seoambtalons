@@ -1,0 +1,21 @@
+---
+import { siteConfig } from "../../config/site";
+
+const data = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contacte — SEO amb Talons",
+  url: `${siteConfig.url}/contacte`,
+  description:
+    "Contacta amb la Laia Xarau per parlar del teu projecte SEO. Consultoria estratègica per a dones emprenedores.",
+  mainEntity: {
+    "@type": "Person",
+    name: siteConfig.author.name,
+    email: siteConfig.author.email,
+    telephone: "+34615084681",
+    url: `${siteConfig.url}/sobre-mi`,
+  },
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
