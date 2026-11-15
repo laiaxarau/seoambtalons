@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "src/config/site";
+import { getActiveAlternates, defaultLocale, hreflangMap } from "../../config/i18n";
 import type { HeadProps as Props } from "../../types/head.types";
 
 const {
@@ -8,6 +9,20 @@ const {
   canonical = Astro.url.href,
   ogImage = "/images/og-default.jpg",
 } = Astro.props;
+
+// Hreflang: obté les alternatives actives per al pathname actual
+const pathname = (() => {
+  try {
+    const p = new URL(canonical).pathname;
+    return p === "/" ? "/" : p.replace(/\/$/, "");
+  } catch {
+    return "/";
+  }
+})();
+
+const activeAlternates = getActiveAlternates(pathname);
+// x-default apunta sempre a la URL en català (idioma principal del lloc)
+const xDefault = hreflangMap[pathname]?.[defaultLocale] ?? canonical;
 ---
 
 <!-- Favicon -->
@@ -31,6 +46,14 @@ const {
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href={canonical} />
+
+<!-- Hreflang: internacionalització (CA arrel / ES /es/ / EN /en/) -->
+{activeAlternates && activeAlternates.map(({ locale, href }) => (
+  <link rel="alternate" hreflang={locale} href={href} />
+))}
+{activeAlternates && (
+  <link rel="alternate" hreflang="x-default" href={xDefault} />
+)}
 
 <!-- Primary SEO -->
 <title>{title} | {siteConfig.title}</title>
