@@ -24,4 +24,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  redirects: {
+    "/qui-soc": {
+      status: 301,
+      destination: "/sobre-mi",
+    },
+  },
 });
