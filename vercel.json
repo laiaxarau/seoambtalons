@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.seoambtalons.cat" }],
+      "destination": "https://seoambtalons.cat/:path*",
+      "permanent": true
+    }
+  ]
+}
