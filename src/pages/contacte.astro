@@ -2,14 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactHero from "../components/contact/ContactHero.astro";
 import ContactForm from "../components/contact/ContactForm.astro";
+import ContactPageSchema from "../components/seo/ContactPageSchema.astro";
 import { contactForm, contactHero } from "../data/contact";
 ---
 
 <BaseLayout
   title="Contacte — Laia | SEO amb Talons"
   description="Contacta amb mi per parlar del teu projecte SEO. Consultoria estratègica per a dones emprenedores que volen créixer a Google."
-  canonical="https://seoambtalons.cat/contact"
+  canonical="https://seoambtalons.cat/contacte"
 >
+  <ContactPageSchema slot="head" />
   <ContactHero {...contactHero} />
   <ContactForm {...contactForm} />
 </BaseLayout>
