@@ -5,18 +5,22 @@ const data = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteConfig.author.name,
-  url: siteConfig.url,
+  url: `${siteConfig.url}/sobre-mi`,
   jobTitle: siteConfig.author.jobTitle,
-  description: siteConfig.description,
+  description: siteConfig.author.bio,
+  email: siteConfig.author.email,
   sameAs: [
     siteConfig.url,
     siteConfig.author.personalWebsite,
     siteConfig.social.instagram,
-    siteConfig.social.twitter,
     siteConfig.social.linkedin,
   ],
   knowsAbout: siteConfig.author.knowsAbout,
-  worksFor: { name: siteConfig.name, url: siteConfig.url },
+  worksFor: {
+    "@type": "ProfessionalService",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
 };
 ---
 

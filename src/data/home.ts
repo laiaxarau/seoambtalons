@@ -8,7 +8,7 @@ export const homeHero = {
   stats: [
     { num: "+120", label: "Negocis posicionats" },
     { num: "3×", label: "Tràfic de mitjana" },
-    { num: "8 anys", label: "D'experiència" },
+    { num: "des de 2016", label: "Fent SEO" },
   ],
   results: {
     label: "📈 Resultats d'una clienta — 6 mesos",
