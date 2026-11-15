@@ -36,7 +36,7 @@
     "typescript": "^6.0.2"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/partytown": "^2.1.9",
     "husky": "^9.1.7"
   }
 }
