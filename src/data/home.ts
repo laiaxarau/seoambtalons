@@ -6,9 +6,9 @@ export const homeHero = {
     "T'ajudem a aparèixer a Google quan les teves clientes et busquen. SEO estratègic pensat per a negocis femenins que volen créixer de veritat.",
   cta: [{ text: "Vull una auditoria →", href: "/contacte" }],
   stats: [
-    { num: "+120", label: "Negocis posicionats" },
-    { num: "3×", label: "Tràfic de mitjana" },
     { num: "des de 2016", label: "Fent SEO" },
+    { num: "100%", label: "Projectes a mida" },
+    { num: "0", label: "Fórmules genèriques" },
   ],
   results: {
     label: "📈 Resultats d'una clienta — 6 mesos",
