@@ -31,4 +31,14 @@ export default defineConfig({
       destination: "/sobre-mi",
     },
   },
+
+  // Estructura multilingüe: CA a l'arrel, ES a /es/, EN a /en/
+  // prefixDefaultLocale: false → català sense prefix /ca/
+  i18n: {
+    defaultLocale: "ca",
+    locales: ["ca", "es", "en"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });
