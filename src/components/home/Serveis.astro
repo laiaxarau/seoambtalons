@@ -1,14 +1,16 @@
 ---
-import { servicesData } from '../../data/services';
+import { servicesData as defaultServices } from '../../data/services';
+import type { Service } from '../../types/service.types';
 
 interface Props {
   eyebrow: string;
   titlePrefix: string;
   titleAccent: string;
   titleSuffix: string;
+  services?: Service[];
 }
 
-const { eyebrow, titlePrefix, titleAccent, titleSuffix } = Astro.props;
+const { eyebrow, titlePrefix, titleAccent, titleSuffix, services = defaultServices } = Astro.props;
 ---
 
 <section class="px-8 lg:px-16 py-24 lg:py-32">
@@ -31,7 +33,7 @@ const { eyebrow, titlePrefix, titleAccent, titleSuffix } = Astro.props;
   <!-- Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
               border border-white/8 divide-x divide-y divide-white/8">
-    {servicesData.map(({ num, icon, title, desc }) => (
+    {services.map(({ num, icon, title, desc }) => (
       // <a
       //   href={href}
       //   class="group relative flex flex-col gap-4 p-8 lg:p-10

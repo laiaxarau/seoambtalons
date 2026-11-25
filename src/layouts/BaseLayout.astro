@@ -11,6 +11,7 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  lang?: string;
 }
 
 export const prerender = true;
@@ -20,11 +21,12 @@ const {
   description = siteConfig.description,
   canonical,
   ogImage = siteConfig.ogImage,
+  lang = "ca",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="ca">
+<html lang={lang}>
   <head>
     <SEOHead
       title={title}

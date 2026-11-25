@@ -1,0 +1,18 @@
+export const tickerDataEs: string[] = [
+  "SEO Estratégico",
+  "Auditoría SEO",
+  "SEO Local",
+  "E-commerce SEO",
+  "Contenidos SEO",
+  "Link Building",
+  "SEO Técnico",
+  "Posicionamiento Web",
+  "Google Analytics",
+  "Google Search Console",
+  "Palabras Clave",
+  "Core Web Vitals",
+  "Mobile First",
+  "UX/UI Design",
+  "Marketing Digital",
+  "Mujeres Emprendedoras",
+];

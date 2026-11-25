@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/home/Hero.astro";
+import Ticker from "../../components/home/Ticker.astro";
+import Serveis from "../../components/home/Serveis.astro";
+import ProfessionalServiceSchema from "../../components/seo/ProfessionalServiceSchema.astro";
+import { homeHeroEs, homeServicesEs } from "../../data/es/home";
+import { servicesDataEs } from "../../data/es/services";
+import { tickerDataEs } from "../../data/es/ticker";
+---
+
+<BaseLayout
+  lang="es"
+  title="Posiciona tu negocio sin perder tu estilo"
+  description="SEO estratégico para mujeres emprendedoras que quieren crecer en Google."
+  canonical="https://seoambtalons.cat/es/"
+>
+  <ProfessionalServiceSchema slot="head" />
+  <Hero {...homeHeroEs} />
+  <Ticker items={tickerDataEs} />
+  <Serveis {...homeServicesEs} services={servicesDataEs} />
+</BaseLayout>
