@@ -68,7 +68,22 @@ export function getActiveAlternates(
 ): { locale: Locale; href: string }[] | null {
   // Normalitza: elimina trailing slash excepte l'arrel
   const normalized = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
-  const alternates = hreflangMap[normalized];
+
+  // Cerca directa per clau (paths en català, p.ex. "/sobre-mi")
+  let alternates = hreflangMap[normalized];
+
+  // Si no es troba per clau, cerca per valor (paths en ES/EN, p.ex. "/es/trabaja-conmigo")
+  if (!alternates) {
+    const fullUrl = `https://seoambtalons.cat${normalized}`;
+    const fullUrlWithSlash = `https://seoambtalons.cat${normalized}/`;
+    for (const entry of Object.values(hreflangMap)) {
+      const values = Object.values(entry);
+      if (values.includes(fullUrl) || values.includes(fullUrlWithSlash)) {
+        alternates = entry;
+        break;
+      }
+    }
+  }
 
   if (!alternates) return null;
 
