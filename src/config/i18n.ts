@@ -14,8 +14,8 @@ export const defaultLocale: Locale = "ca";
 /** Canvia a true quan les traduccions estiguin publicades */
 export const availableLocales: Record<Locale, boolean> = {
   ca: true,
-  es: false,
-  en: false,
+  es: true,
+  en: true,
 };
 
 /**

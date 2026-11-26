@@ -1,8 +1,13 @@
 ---
-import { tickerUtils } from "../../data/ticker";
+import { tickerData } from "../../data/ticker";
 
+interface Props {
+  items?: string[];
+}
+
+const { items = tickerData } = Astro.props;
 // Dupliquem per fer el loop infinit sense tall
-const doubled = tickerUtils.getDoubled();
+const doubled = [...items, ...items];
 ---
 
 <div class="overflow-hidden bg-coral py-4" aria-hidden="true">
